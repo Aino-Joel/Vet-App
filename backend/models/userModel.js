@@ -66,20 +66,20 @@ userSchema.statics.signup = async function (
 };
 
 //static login method
-userSchema.statics.login = async function (username, password) {
-  if (!username || !password) {
+userSchema.statics.login = async function (email, password) {
+  if (!email || !password) {
     throw Error("All fields should be filled");
   }
 
   var user = null;
 
   //validation
-  if (validator.isEmail(username)) {
-    user = await this.findOne({ email: username });
+  if (validator.isEmail(email)) {
+    user = await this.findOne({ email: email });
   }
 
   if (!user) {
-    throw Error("Incorrect Username");
+    throw Error("Incorrect email");
   }
 
   const match = await bcrypt.compare(password, user.password);

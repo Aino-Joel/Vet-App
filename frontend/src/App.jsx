@@ -12,9 +12,13 @@ import Urgentcare from'./pages/Urgentcare'
 import Vetclinic from './pages/Vetclinic'
 import Videovisit from './pages/Videovisit'
 import Appointment from './pages/Appointment'
+import { useAuthContext } from './hooks/useAuthContext';
 
 
 function App() {
+
+  const {user} = useAuthContext()
+
   return (
 <BrowserRouter>
 <Header/>
