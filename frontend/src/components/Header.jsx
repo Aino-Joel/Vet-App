@@ -3,9 +3,19 @@ import { Navbar, TextInput, Button } from 'flowbite-react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaMoon } from 'react-icons/fa';
+import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function Header() {
   const path = useLocation().pathname;
+
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+
+  const handleClick = () => {
+    logout();
+  };
+
   return (
     <Navbar className='border-b-2 sticky top-0 bg-white dark:bg-gray-900 z-50'>
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
@@ -29,11 +39,17 @@ function Header() {
         <Button className='w-12 h-10 hidden sm:inline' color='gray' pill>
           <FaMoon />
         </Button>
-        <Link to="/signup">
+        {user && (
+        <div>
+          {/* <span>{user.username}</span> */}
+          <button onClick={handleClick}>Logout</button>
+        </div>
+      )}
+        {!user && (<Link to="/signin">
           <Button gradientDuoTone='greenToBlue' outline>
-            Sign Up
+            Sign In
           </Button>
-        </Link>
+        </Link>)}
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>

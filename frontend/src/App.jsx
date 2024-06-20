@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
@@ -20,8 +20,13 @@ import Hime from './pages/Hime'
 import Post from './components/Post'
 import Single from './pages/Single'
 import Singlepost from './components/Singlepost'
+import { useAuthContext } from './hooks/useAuthContext';
+
 
 function App() {
+
+  const {user} = useAuthContext()
+
   return (
 <BrowserRouter>
 <Header/>
@@ -30,7 +35,7 @@ function App() {
   <Route path ="/" element = {<Home/>}/>
   <Route path ="/about" element = {<About/>}/>
   <Route path ="/projects" element = {<Projects/>}/>
-  <Route path ="/signin" element = {<Signin/>}/>
+  <Route path="/signin" element={!user ? <Signin /> : <Navigate to="/"/>} />
   <Route path ="/signup" element = {<Signup/>}/>
   <Route path ="/farmvisit" element = {<Farmvisit/>}/>
   <Route path ="/urgentcare" element = {<Urgentcare/>}/>
