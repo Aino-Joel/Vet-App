@@ -167,7 +167,7 @@ function Home() {
   <div className="mt-2 mb-5">
   <div className="flex justify-between items-center mb-4">
       <h2 className="text-2xl font-semibold">Top Veterinary Doctors</h2>
-      <a href="#reviews" className="text-indigo-500 text-lg font-medium text-sm underline">See all reviews</a>
+      <Link to='/doctor' className="text-indigo-500 text-lg font-medium text-sm underline">See all doctors</Link>
     </div>
     <Slider {...settings}>
       {data.map((d, index) => (

@@ -21,6 +21,12 @@ import Post from './components/Post'
 import Single from './pages/Single'
 import Singlepost from './components/Singlepost'
 import { useAuthContext } from './hooks/useAuthContext';
+import Rating from './pages/Rating'
+import Doctor from './pages/Doctor'
+import './Docprofile.css'
+import './App.css'
+
+
 
 
 function App() {
@@ -50,7 +56,8 @@ function App() {
    <Route path="/post" element = {<Post/>}/>
    <Route path="/single" element = {<Single/>}/>
    <Route path="/singlepost" element = {<Singlepost/>}/>
-  
+  <Route path="/rating" element= {<Rating/>}/>
+  <Route path="/doctor" element= {<Doctor/>}/>
   
   
   
@@ -67,4 +74,5 @@ function App() {
   )
 }
 
-export default App
+
+   export default App
