@@ -5,13 +5,13 @@ import React, { useState } from 'react';
 
 
 const doctorsData = [
-  { id: 1, name: 'Dr. Jauhara Kiti', specialty: 'General Veterinary', image: 'doctor3.jpeg', rating: 4.5, nextAvailable: 'June 10, 2024' },
-  { id: 2, name: 'Dr. Joshua Magero', specialty: 'Castration and Delivery', image: 'doctor2.jpeg', rating: 4.7, nextAvailable: 'June 12, 2024' },
-  { id: 3, name: 'Dr. Kijjo Cosmas', specialty: 'Nutrition', image: 'doctor1.png', rating: 4.6, nextAvailable: 'June 11, 2024' },
-  { id: 4, name: 'Dr. Nabukenya Rehemah', specialty: 'Artificial Insemination', image: 'doctor3.jpeg', rating: 4.8, nextAvailable: 'June 15, 2024' },
-  { id: 5, name: 'Dr. Sarah Davis', specialty: 'veterinary Surgery', image: 'doctor3.jpeg', rating: 4.9, nextAvailable: 'June 13, 2024' },
-  { id: 6, name: 'Dr. Aino Joel', specialty: 'Poultry Vet', image: 'doctor2.jpeg', rating: 4.3, nextAvailable: 'June 14, 2024' },
-  { id: 7, name: 'Dr. Olivia Clark', specialty: 'General Veterinary', image: 'doctor3.jpeg', rating: 4.2, nextAvailable: 'June 16, 2024' },
+  { id: 1, name: 'Dr. Jauhara Kiti', specialty: 'General Veterinary', image: 'doctor3.jpeg', rating: 4.5, nextAvailable: 'June 10, 2024',location: 'Wakiso' },
+  { id: 2, name: 'Dr. Joshua Magero', specialty: 'Castration and Delivery', image: 'doctor2.jpeg', rating: 4.7, nextAvailable: 'June 12, 2024',location: 'Kampala' },
+  { id: 3, name: 'Dr. Kijjo Cosmas', specialty: 'Nutrition', image: 'doctor1.png', rating: 4.6, nextAvailable: 'June 11, 2024',location: 'Wakiso' },
+  { id: 4, name: 'Dr. Nabukenya Rehemah', specialty: 'Artificial Insemination', image: 'doctor3.jpeg', rating: 4.8, nextAvailable: 'June 15, 2024',location: 'Kampala' },
+  { id: 5, name: 'Dr. Sarah Davis', specialty: 'veterinary Surgery', image: 'doctor3.jpeg', rating: 4.9, nextAvailable: 'June 13, 2024',location: 'Wakiso' },
+  { id: 6, name: 'Dr. Aino Joel', specialty: 'Poultry Vet', image: 'doctor2.jpeg', rating: 4.3, nextAvailable: 'June 14, 2024',location: 'Wakiso'},
+  { id: 7, name: 'Dr. Olivia Clark', specialty: 'General Veterinary', image: 'doctor3.jpeg', rating: 4.2, nextAvailable: 'June 16, 2024',location: 'Wakiso' },
   // Add more doctors as needed
 ];
 
@@ -21,7 +21,8 @@ const DoctorSelection = ({ onSelect }) => {
 
   const filteredDoctors = doctorsData.filter(doctor =>
     doctor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    doctor.specialty.toLowerCase().includes(searchQuery.toLowerCase())
+    doctor.specialty.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    doctor.location.toLowerCase().includes(searchQuery.toLowerCase()) 
   );
 
   const handleSelectDoctor = (doctor) => {
@@ -55,7 +56,9 @@ const DoctorSelection = ({ onSelect }) => {
                 <span className="star">&#9733;</span> {doctor.rating}
               </div>
               <p className="next-available">Next available: {doctor.nextAvailable}</p>
-            </div>
+              <p className="next-available">Location: {doctor.location}</p>
+
+</div>
           </div>
         ))}
       </div>

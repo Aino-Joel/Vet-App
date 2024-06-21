@@ -12,15 +12,7 @@
     flex-direction: column;
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     font-size: 16px;
-  }
-  
-  ul {
-    list-style-type: none; /* Remove default bullets */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-  }
-  
-  
+  } 
   ul {
     list-style-type: none; /* Remove default bullets */
     padding: 0; /* Remove default padding */

@@ -25,6 +25,7 @@ import Rating from './pages/Rating'
 import Doctor from './pages/Doctor'
 import './Docprofile.css'
 import './App.css'
+import Booking from './pages/Booking'
 
 
 
@@ -58,6 +59,7 @@ function App() {
    <Route path="/singlepost" element = {<Singlepost/>}/>
   <Route path="/rating" element= {<Rating/>}/>
   <Route path="/doctor" element= {<Doctor/>}/>
+  <Route path="/booking" element= {<Booking/>}/>
   
   
   
