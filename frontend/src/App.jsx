@@ -13,7 +13,7 @@ import Vetclinic from './pages/Vetclinic'
 import Videovisit from './pages/Videovisit'
 import Appointment from './pages/Appointment'
 import { useAuthContext } from './hooks/useAuthContext';
-
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
@@ -21,6 +21,10 @@ function App() {
 
   return (
 <BrowserRouter>
+<Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
 <Header/>
 
 <Routes>
