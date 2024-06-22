@@ -12,7 +12,22 @@ import Urgentcare from'./pages/Urgentcare'
 import Vetclinic from './pages/Vetclinic'
 import Videovisit from './pages/Videovisit'
 import Appointment from './pages/Appointment'
+import Createpost from './pages/Createpost'
+import Blog from './components/Blog'
+import Posts from './components/Posts'
+import Sidebar  from './components/Sidebar'
+import Hime from './pages/Hime'
+import Post from './components/Post'
+import Single from './pages/Single'
+import Singlepost from './components/Singlepost'
 import { useAuthContext } from './hooks/useAuthContext';
+import Rating from './pages/Rating'
+import Doctor from './pages/Doctor'
+import './Docprofile.css'
+import './App.css'
+import Booking from './pages/Booking'
+
+
 
 
 function App() {
@@ -34,6 +49,20 @@ function App() {
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
   <Route path ="/videovisit" element = {<Videovisit/>}/>
   <Route path="/appointment" element = {<Appointment/>}/>
+  <Route path="/createpost" element = {<Createpost/>}/>
+  <Route path="/blog" element = {<Blog/>}/>
+  <Route path="/posts" element = {<Posts/>}/>
+  <Route path="/sidebar" element = {<Sidebar/>}/>
+   <Route path="/hime" element = {<Hime/>}/>
+   <Route path="/post" element = {<Post/>}/>
+   <Route path="/single" element = {<Single/>}/>
+   <Route path="/singlepost" element = {<Singlepost/>}/>
+  <Route path="/rating" element= {<Rating/>}/>
+  <Route path="/doctor" element= {<Doctor/>}/>
+  <Route path="/booking" element= {<Booking/>}/>
+  
+  
+  
   
   
   
@@ -47,4 +76,5 @@ function App() {
   )
 }
 
-export default App
+
+   export default App

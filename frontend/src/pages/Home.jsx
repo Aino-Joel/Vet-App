@@ -153,8 +153,7 @@ function Home() {
             <Link to="/videocall-visit">View more details</Link>
           </Tabs.Item>
           <Tabs.Item title="Farm Visit" icon={MdHome}>
-            <Link to="/farm-visit">This is <span className="font-medium text-gray-800 dark:text-white">Farm Visit tab's associated content</span>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</Link>
-          </Tabs.Item>
+         <h1>Farm visits are carried out on different demonstration farms around Uganda in different areas. Demonstration farms were created to serve different purposes and a few of them include:- Demonstration farms serve as practical training grounds for farmers, showcasing best practices, innovative techniques, and new technologies in agriculture.Practical activities such as planting, irrigation......... <span className="font-medium text-gray-800 dark:text-green"><Link to="/farmvisit">Click to read more</Link></span> </h1>             </Tabs.Item>
           <Tabs.Item title="Urgent Care" icon={MdLocalHospital}>
             <Link to="/urgent-care">This is <span className="font-medium text-gray-800 dark:text-white">Urgent Care tab's associated content</span>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</Link>
           </Tabs.Item>
@@ -168,7 +167,7 @@ function Home() {
   <div className="mt-2 mb-5">
   <div className="flex justify-between items-center mb-4">
       <h2 className="text-2xl font-semibold">Top Veterinary Doctors</h2>
-      <a href="#reviews" className="text-indigo-500 text-lg font-medium text-sm underline">See all reviews</a>
+      <Link to='/doctor' className="text-indigo-500 text-lg font-medium text-sm underline">See all doctors</Link>
     </div>
     <Slider {...settings}>
       {data.map((d, index) => (
