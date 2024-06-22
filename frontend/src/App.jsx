@@ -13,7 +13,7 @@ import Vetclinic from './pages/Vetclinic'
 import Videovisit from './pages/Videovisit'
 import Appointment from './pages/Appointment'
 import { useAuthContext } from './hooks/useAuthContext';
-
+import ChatPage from './pages/chatPage'
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
 
   return (
 <BrowserRouter>
+
 <Header/>
 
 <Routes>
@@ -34,6 +35,7 @@ function App() {
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
   <Route path ="/videovisit" element = {<Videovisit/>}/>
   <Route path="/appointment" element = {<Appointment/>}/>
+  <Route path="/chats" element = {<ChatPage/>}/>
   
   
   
