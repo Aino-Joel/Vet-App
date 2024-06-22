@@ -22,15 +22,26 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  isDoctor: {
+    type: Boolean,
+    default: false,
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  seenNotifications: {
+    type: Array,
+    default: [],
+  },
+  unseenNotifications: {
+    type: Array,
+    default: [],
+  },
 });
 
 //static signup method
-userSchema.statics.signup = async function (
-  fName,
-  lName,
-  email,
-  password
-) {
+userSchema.statics.signup = async function (fName, lName, email, password) {
   //validation
   if (!fName || !lName || !email || !password) {
     throw Error("All fields should be filled");
@@ -59,7 +70,7 @@ userSchema.statics.signup = async function (
     fName,
     lName,
     email,
-    password: hash
+    password: hash,
   });
 
   return user;
