@@ -21,7 +21,7 @@ export const useSignup = () => {
 
     if (response.ok) {
       //save user to local storage
-      localStorage.setItem("user", JSON.stringify(json));
+      localStorage.setItem("userInfo", JSON.stringify(json));
 
       //update AuthConext
       dispatch({ type: "LOGIN", payload: json });

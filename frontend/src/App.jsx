@@ -13,7 +13,11 @@ import Vetclinic from './pages/Vetclinic'
 import Videovisit from './pages/Videovisit'
 import Appointment from './pages/Appointment'
 import { useAuthContext } from './hooks/useAuthContext';
+<<<<<<< HEAD
 import { Toaster } from 'react-hot-toast'
+=======
+import ChatPage from './pages/chatPage'
+>>>>>>> b786cd804407dbe05a93f7702082d87fc4efe329
 
 function App() {
 
@@ -21,10 +25,14 @@ function App() {
 
   return (
 <BrowserRouter>
+<<<<<<< HEAD
 <Toaster
   position="top-center"
   reverseOrder={false}
 />
+=======
+
+>>>>>>> b786cd804407dbe05a93f7702082d87fc4efe329
 <Header/>
 
 <Routes>
@@ -38,6 +46,7 @@ function App() {
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
   <Route path ="/videovisit" element = {<Videovisit/>}/>
   <Route path="/appointment" element = {<Appointment/>}/>
+  <Route path="/chats" element = {<ChatPage/>}/>
   
   
   

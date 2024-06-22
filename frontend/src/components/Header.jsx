@@ -44,7 +44,7 @@ function Header() {
         </Button>
         {user && (
           <div>
-            {/* <span>{user.user.lName}</span> */}
+            <span>{user.lName}</span>
             <button onClick={handleClick}>Logout</button>
           </div>
         )}
