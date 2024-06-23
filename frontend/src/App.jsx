@@ -34,13 +34,8 @@ function App() {
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
   <Route path ="/videovisit" element = {<Videovisit/>}/>
   <Route path="/appointment" element = {<Appointment/>}/>
-  
-  
-  
-  
-  
-  
-  
+  <Route path ="/Videovisit" element = {<Videovisit/>}/>
+ 
 </Routes>
 <Footers/>
 </BrowserRouter>
