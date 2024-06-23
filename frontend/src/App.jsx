@@ -10,7 +10,7 @@ import Footers from './components/Footers'
 import Farmvisit from './pages/Farmvisit'
 import Urgentcare from'./pages/Urgentcare'
 import Vetclinic from './pages/Vetclinic'
-import Videovisit from './pages/Videovisit'
+import Videovisit from './pages/videovisit'
 import Appointment from './pages/Appointment'
 import { useAuthContext } from './hooks/useAuthContext';
 
