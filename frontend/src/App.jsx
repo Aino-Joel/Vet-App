@@ -21,6 +21,7 @@ import Post from './components/Post'
 import Single from './pages/Single'
 import Singlepost from './components/Singlepost'
 import { useAuthContext } from './hooks/useAuthContext';
+import ChatPage from './pages/chatPage'
 import Rating from './pages/Rating'
 import Doctor from './pages/Doctor'
 import './Docprofile.css'
@@ -36,6 +37,7 @@ function App() {
 
   return (
 <BrowserRouter>
+
 <Header/>
 
 <Routes>
@@ -49,6 +51,7 @@ function App() {
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
   <Route path ="/videovisit" element = {<Videovisit/>}/>
   <Route path="/appointment" element = {<Appointment/>}/>
+  <Route path="/chats" element = {<ChatPage/>}/>
   <Route path="/createpost" element = {<Createpost/>}/>
   <Route path="/blog" element = {<Blog/>}/>
   <Route path="/posts" element = {<Posts/>}/>
