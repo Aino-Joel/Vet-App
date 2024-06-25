@@ -43,13 +43,13 @@ function App() {
 <Routes>
   <Route path ="/" element = {<Home/>}/>
   <Route path ="/about" element = {<About/>}/>
-  <Route path ="/projects" element = {<Projects/>}/>
+  {/* <Route path ="/projects" element = {<Projects/>}/> */}
   <Route path="/signin" element={!user ? <Signin /> : <Navigate to="/"/>} />
   <Route path ="/signup" element = {<Signup/>}/>
-  <Route path ="/farmvisit" element = {<Farmvisit/>}/>
+  {/* <Route path ="/farmvisit" element = {<Farmvisit/>}/>
   <Route path ="/urgentcare" element = {<Urgentcare/>}/>
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
-  <Route path ="/videovisit" element = {<Videovisit/>}/>
+  <Route path ="/videovisit" element = {<Videovisit/>}/> */}
   <Route path="/appointment" element = {<Appointment/>}/>
   <Route path="/chats" element = {<ChatPage/>}/>
   <Route path="/createpost" element = {<Createpost/>}/>
