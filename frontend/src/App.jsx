@@ -10,7 +10,7 @@ import Footers from './components/Footers'
 import Farmvisit from './pages/Farmvisit'
 import Urgentcare from'./pages/Urgentcare'
 import Vetclinic from './pages/Vetclinic'
-import Videovisit from './pages/Videovisit'
+import Videovisit from './pages/videovisit'
 import Appointment from './pages/Appointment'
 import Createpost from './pages/Createpost'
 import Blog from './components/Blog'
@@ -51,6 +51,9 @@ function App() {
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
   <Route path ="/videovisit" element = {<Videovisit/>}/> */}
   <Route path="/appointment" element = {<Appointment/>}/>
+    
+  <Route path ="/Videovisit" element = {<Videovisit/>}/>
+ 
   <Route path="/chats" element = {<ChatPage/>}/>
   <Route path="/createpost" element = {<Createpost/>}/>
   <Route path="/blog" element = {<Blog/>}/>
@@ -72,7 +75,7 @@ function App() {
   
   
   
-  
+
 </Routes>
 <Footers/>
 </BrowserRouter>
