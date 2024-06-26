@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
+
+div.css-1r3tbwq {
+  min-height: 100%;
+  display: flex;
+  background-position: center;
+  background-size: cover;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.281);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+div.css-1wyf84f, div.css-h3hado{
+ height: 90% ;
+}
+div.messages{
+  overflow-y: auto;
+  height: 90%;
+}
+/* Temporary outline to inspect elements */
+/* * {
+  outline: 1px solid red;
+} */
