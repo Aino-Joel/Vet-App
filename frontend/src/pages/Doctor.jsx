@@ -1,5 +1,5 @@
 import React from 'react'
-import DoctorSelection from '../components/Choosedoctor/Selectdoc'
+import DoctorSelection from '../Components/Choosedoctor/Selectdoc'
 
 function Doctor() {
   return (
