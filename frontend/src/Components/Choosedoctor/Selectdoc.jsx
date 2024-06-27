@@ -1,36 +1,59 @@
-
-
 // DoctorSelection.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
+// const doctorsData = [
+//   { id: 1, name: 'Dr. Jauhara Kiti', specialty: 'General Veterinary', image: 'doctor3.jpeg', rating: 4.5, nextAvailable: 'June 10, 2024',location: 'Wakiso' },
+//   { id: 2, name: 'Dr. Joshua Magero', specialty: 'Castration and Delivery', image: 'doctor2.jpeg', rating: 4.7, nextAvailable: 'June 12, 2024',location: 'Kampala' },
+//   { id: 3, name: 'Dr. Kijjo Cosmas', specialty: 'Nutrition', image: 'doctor1.png', rating: 4.6, nextAvailable: 'June 11, 2024',location: 'Wakiso' },
+//   { id: 4, name: 'Dr. Nabukenya Rehemah', specialty: 'Artificial Insemination', image: 'doctor3.jpeg', rating: 4.8, nextAvailable: 'June 15, 2024',location: 'Kampala' },
+//   { id: 5, name: 'Dr. Sarah Davis', specialty: 'veterinary Surgery', image: 'doctor3.jpeg', rating: 4.9, nextAvailable: 'June 13, 2024',location: 'Wakiso' },
+//   { id: 6, name: 'Dr. Aino Joel', specialty: 'Poultry Vet', image: 'doctor2.jpeg', rating: 4.3, nextAvailable: 'June 14, 2024',location: 'Wakiso'},
+//   { id: 7, name: 'Dr. Olivia Clark', specialty: 'General Veterinary', image: 'doctor3.jpeg', rating: 4.2, nextAvailable: 'June 16, 2024',location: 'Wakiso' },
+//   // Add more doctors as needed
+// ];
 
-const doctorsData = [
-  { id: 1, name: 'Dr. Jauhara Kiti', specialty: 'General Veterinary', image: 'doctor3.jpeg', rating: 4.5, nextAvailable: 'June 10, 2024',location: 'Wakiso' },
-  { id: 2, name: 'Dr. Joshua Magero', specialty: 'Castration and Delivery', image: 'doctor2.jpeg', rating: 4.7, nextAvailable: 'June 12, 2024',location: 'Kampala' },
-  { id: 3, name: 'Dr. Kijjo Cosmas', specialty: 'Nutrition', image: 'doctor1.png', rating: 4.6, nextAvailable: 'June 11, 2024',location: 'Wakiso' },
-  { id: 4, name: 'Dr. Nabukenya Rehemah', specialty: 'Artificial Insemination', image: 'doctor3.jpeg', rating: 4.8, nextAvailable: 'June 15, 2024',location: 'Kampala' },
-  { id: 5, name: 'Dr. Sarah Davis', specialty: 'veterinary Surgery', image: 'doctor3.jpeg', rating: 4.9, nextAvailable: 'June 13, 2024',location: 'Wakiso' },
-  { id: 6, name: 'Dr. Aino Joel', specialty: 'Poultry Vet', image: 'doctor2.jpeg', rating: 4.3, nextAvailable: 'June 14, 2024',location: 'Wakiso'},
-  { id: 7, name: 'Dr. Olivia Clark', specialty: 'General Veterinary', image: 'doctor3.jpeg', rating: 4.2, nextAvailable: 'June 16, 2024',location: 'Wakiso' },
-  // Add more doctors as needed
-];
-
-const DoctorSelection = ({ onSelect }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+const DoctorSelection = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const [showAllDoctors, setShowAllDoctors] = useState(false);
+  const [doctorsData, setDoctorsData] = useState("");
+  const navigate = useNavigate();
 
-  const filteredDoctors = doctorsData.filter(doctor =>
-    doctor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    doctor.specialty.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    doctor.location.toLowerCase().includes(searchQuery.toLowerCase()) 
-  );
+  const { user } = useAuthContext();
 
-  const handleSelectDoctor = (doctor) => {
-    onSelect(doctor);
-  };
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      const response = await fetch("http://localhost:5000/api/doctors", {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (response.ok) {
+        setDoctorsData(json);
+      }
+      if (response.status == 401) {
+        navigate("/signin");
+      }
+    };
+
+    if (user) {
+      fetchDoctors();
+    }
+  }, [user]);
+
+  // const filteredDoctors = doctorsData.filter(doctor =>
+  //   doctor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //   doctor.specialty.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //   doctor.location.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  const handleSelectDoctor = (doctor) => {};
 
   const toggleShowDoctors = () => {
-    setShowAllDoctors(prevState => !prevState);
+    setShowAllDoctors((prevState) => !prevState);
   };
 
   return (
@@ -46,23 +69,33 @@ const DoctorSelection = ({ onSelect }) => {
         />
       </div>
       <div className="doctor-list">
-        {filteredDoctors.slice(0, showAllDoctors ? filteredDoctors.length : 3).map(doctor => (
-          <div key={doctor.id} className="doctor-card" onClick={() => handleSelectDoctor(doctor)}>
-            <img src={doctor.image} alt={doctor.name} className="doctor-image" />
-            <div className="doctor-info">
-              <h2>{doctor.name}</h2>
-              <p>{doctor.specialty}</p>
-              <div className="doctor-rating">
-                <span className="star">&#9733;</span> {doctor.rating}
+        {doctorsData &&
+          doctorsData.map((doctor) => (
+            <div
+              key={doctor._id}
+              className="doctor-card"
+              onClick={() => handleSelectDoctor(doctor)}
+            >
+              <img
+                src={doctor.image}
+                alt={doctor.lName}
+                className="doctor-image"
+              />
+              <div className="doctor-info">
+                <h2>{`${doctor.fName} ${doctor.lName}`}</h2>
+                <p>{doctor.specialization}</p>
+                <div className="doctor-rating">
+                  <span className="star">&#9733;</span> {doctor.experience}
+                </div>
+                <p className="next-available">
+                  Next available: {doctor.nextAvailable}
+                </p>
+                <p className="next-available">Location: {doctor.location}</p>
               </div>
-              <p className="next-available">Next available: {doctor.nextAvailable}</p>
-              <p className="next-available">Location: {doctor.location}</p>
-
-</div>
-          </div>
-        ))}
+            </div>
+          ))}
       </div>
-      {filteredDoctors.length > 3 && (
+      {/* {filteredDoctors.length > 3 && (
         <div className="show-more-less">
           {showAllDoctors ? (
             <button onClick={toggleShowDoctors}>Show Less</button>
@@ -70,7 +103,7 @@ const DoctorSelection = ({ onSelect }) => {
             <button onClick={toggleShowDoctors}>Show More</button>
           )}
         </div>
-      )} 
+      )} */}
     </div>
   );
 };

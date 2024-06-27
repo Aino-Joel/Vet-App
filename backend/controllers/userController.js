@@ -19,7 +19,7 @@ const allUsers = async (req, res) => {
 };
 
 const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "2h" });
+  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "2d" });
 };
 
 //login user
@@ -72,6 +72,7 @@ const signupUser = async (req, res) => {
   }
 };
 
+//apply doctor
 const applyDoctor = async (req, res) => {
   try {
     
