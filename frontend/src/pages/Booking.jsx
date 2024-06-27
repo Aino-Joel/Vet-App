@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "tailwindcss/tailwind.css"; // Ensure Tailwind CSS is imported
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedTime, setSelectedTime] = useState('10:00');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [extraInfo, setExtraInfo] = useState('');
+  const [selectedTime, setSelectedTime] = useState("10:00");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [extraInfo, setExtraInfo] = useState("");
+  const { user } = useAuthContext();
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -20,22 +22,26 @@ const Booking = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`Appointment booked for ${name} on ${selectedDate.toDateString()} at ${selectedTime}. Extra Info: ${extraInfo}`);
+    alert(
+      `Appointment booked for ${name} on ${selectedDate.toDateString()} at ${selectedTime}. Extra Info: ${extraInfo}`
+    );
     // Here you can also add code to send the data to your server or API.
   };
 
   return (
     <div className="max-w-md mx-auto bg-white p-8 border border-gray-300 rounded-lg shadow-lg mt-8 mb-8">
-      <h2 className="text-2xl font-bold mb-6 text-center">Book an Appointment</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className="text-2xl font-bold mb-6 text-center">
+        Book an Appointment
+      </h2>
+      {user && (<form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 mb-2">Name:</label>
           <input
             type="text"
-            value={name}
+            value={`${user.fName} ${user.lName}`}
             onChange={(e) => setName(e.target.value)}
             required
-            placeholder='Your Name i.e John Doe'
+            // placeholder='Your Name i.e John Doe'
             className="w-full px-3 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -43,7 +49,7 @@ const Booking = () => {
           <label className="block text-gray-700 mb-2">Email:</label>
           <input
             type="email"
-            value={email}
+            value={user.email}
             onChange={(e) => setEmail(e.target.value)}
             required
             className="w-full px-3 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -71,7 +77,9 @@ const Booking = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Additional Information:</label>
+          <label className="block text-gray-700 mb-2">
+            Additional Information:
+          </label>
           <textarea
             value={extraInfo}
             onChange={(e) => setExtraInfo(e.target.value)}
@@ -85,7 +93,7 @@ const Booking = () => {
         >
           Book Appointment
         </button>
-      </form>
+      </form>)}
     </div>
   );
 };

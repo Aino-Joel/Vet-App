@@ -1,6 +1,6 @@
 // DoctorSelection.jsx
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 // const doctorsData = [
@@ -71,6 +71,7 @@ const DoctorSelection = () => {
       <div className="doctor-list">
         {doctorsData &&
           doctorsData.map((doctor) => (
+            <Link to={`/doctor/${doctor._id}`}>
             <div
               key={doctor._id}
               className="doctor-card"
@@ -93,6 +94,7 @@ const DoctorSelection = () => {
                 <p className="next-available">Location: {doctor.location}</p>
               </div>
             </div>
+            </Link>
           ))}
       </div>
       {/* {filteredDoctors.length > 3 && (

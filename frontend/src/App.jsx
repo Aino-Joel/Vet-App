@@ -52,7 +52,7 @@ function App() {
   <Route path ="/urgentcare" element = {<Urgentcare/>}/>
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
   <Route path ="/videovisit" element = {<Videovisit/>}/> */}
-  <Route path="/appointment" element = {<Appointment/>}/>
+  <Route path="/doctor/:id" element = {<Appointment/>}/>
     
   <Route path ="/Videovisit" element = {<DoctorProfile/>}/>
  
@@ -67,7 +67,7 @@ function App() {
    <Route path="/singlepost" element = {<Singlepost/>}/>
   <Route path="/rating" element= {<Rating/>}/>
   <Route path="/doctor" element= {<Doctor/>}/>
-  <Route path="/booking" element= {<Booking/>}/>
+  <Route path="/doctor/:id/booking" element= {<Booking/>}/>
   
   
   
