@@ -28,7 +28,7 @@ body {
   .headerimg {
     width: 100%;
     height: 450px;
-    margin-top: 40px; /* Adjust margin-top to reduce space */
+    margin-top: 20px; /* Adjust margin-top to reduce space */
     object-fit: cover;
   }
   

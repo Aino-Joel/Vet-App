@@ -1,23 +1,20 @@
 import React from "react";
-import { Navbar, TextInput, Button } from "flowbite-react";
+import { Avatar, Dropdown, Navbar, Button } from "flowbite-react"; // Import Button from flowbite-react
 import { Link, useLocation } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
-import { FaMoon } from "react-icons/fa";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 function Header() {
-  const path = useLocation().pathname;
-
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const path = useLocation().pathname;
 
   const handleClick = () => {
     logout();
   };
 
   return (
-    <Navbar className="border-b-2 sticky top-0 bg-white dark:bg-gray-900 z-50">
+    <Navbar fluid rounded>
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
@@ -27,33 +24,35 @@ function Header() {
         </span>
         Connect
       </Link>
-      <form>
-        <TextInput
-          type="text"
-          placeholder="search...."
-          rightIcon={AiOutlineSearch}
-          className="hidden lg:inline"
-        />
-      </form>
-      <Button className="w-12 h-10 lg:hidden" color="gray" pill>
-        <AiOutlineSearch />
-      </Button>
-      <div className="flex gap-2 md:order-2">
-        <Button className="w-12 h-10 hidden sm:inline" color="gray" pill>
-          <FaMoon />
-        </Button>
-        {user && (
-          <div>
-            <span>{user.lName}</span>
-            <button onClick={handleClick}>Logout</button>
-          </div>
-        )}
+      <div className="flex md:order-2 items-center">
+        <Dropdown
+          arrowIcon={false}
+          inline
+          label={
+            <Avatar
+              alt="User settings"
+              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              rounded
+            />
+          }
+        >
+          <Dropdown.Header>
+            <span className="block text-sm">Bonnie Green</span>
+            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+          </Dropdown.Header>
+          <Dropdown.Item>My Profile</Dropdown.Item>
+          <Dropdown.Item>Notifications</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item onClick={handleClick}>Sign out</Dropdown.Item>
+        </Dropdown>
         {!user && (
-          <Link to="/signin">
-            <Button gradientDuoTone="greenToBlue" outline>
-              Sign In
-            </Button>
-          </Link>
+          <div className="ml-4"> 
+            <Link to="/signin">
+              <Button gradientDuoTone="greenToBlue" outline>
+                Sign In
+              </Button>
+            </Link>
+          </div>
         )}
         <Navbar.Toggle />
       </div>
@@ -61,11 +60,14 @@ function Header() {
         <Navbar.Link active={path === "/"} as={"div"}>
           <Link to="/">Home</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === "/about"} as={"div"}>
-          <Link to="/about">About</Link>
+        <Navbar.Link active={path === "/blogs"} as={"div"}>
+          <Link to="/blogs">Blog</Link> 
         </Navbar.Link>
         <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link to="/projects">Projects</Link>
+          <Link to="/projects">Chat</Link>
+        </Navbar.Link>
+<Navbar.Link active={path === "/doctor"} as={"div"}>
+          <Link to="/doctor">Veterinary Doctors</Link>
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
