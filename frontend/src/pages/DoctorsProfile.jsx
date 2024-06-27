@@ -103,12 +103,12 @@ const DoctorProfile = () => (
   </div>
 );
 
-const App = () => {
-  return (
-    <div className="min-h-screen">
-      <DoctorProfile />
-    </div>
-  );
-};
+// const App = () => {
+//   return (
+//     <div className="min-h-screen">
+//       <DoctorProfile />
+//     </div>
+//   );
+// };
 
 export default DoctorProfile;
