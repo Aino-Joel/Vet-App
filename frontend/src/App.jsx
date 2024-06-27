@@ -7,7 +7,7 @@ import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import Header from './components/Header'
 import Footers from './components/Footers'
-import Farmvisit from './pages/Farmvisit'
+import ApplyDoctor from './pages/ApplyDoctor'
 import Urgentcare from'./pages/Urgentcare'
 import Vetclinic from './pages/Vetclinic'
 import Videovisit from './pages/videovisit'
@@ -46,7 +46,7 @@ function App() {
   <Route path ="/projects" element = {<Projects/>}/>
   <Route path="/signin" element={!user ? <Signin /> : <Navigate to="/"/>} />
   <Route path ="/signup" element = {<Signup/>}/>
-  <Route path ="/farmvisit" element = {<Farmvisit/>}/>
+  <Route path ="/apply" element = {<ApplyDoctor/>}/>
   <Route path ="/urgentcare" element = {<Urgentcare/>}/>
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
   <Route path ="/videovisit" element = {<Videovisit/>}/>
