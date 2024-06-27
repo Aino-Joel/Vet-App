@@ -5,9 +5,9 @@ function Blog() {
   return (
   
     <div className='header'>
-        <div className="headerTitle">
+        {/* <div className="headerTitle">
             <span className="headerTitlelg">Blog</span>
-        </div>
+        </div> */}
    <img className="headerimg"src='https://flowbite.com/docs/images/carousel/carousel-1.svg'/>
     
     </div>

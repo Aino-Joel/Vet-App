@@ -17,9 +17,9 @@ const CheckboxList = () => {
 
   return (
     <div className='checkbox'>
-      <ul >
+      <ul tclassName='lis'>
         {items.map(item => (
-          <li key={item.id}>
+          <li className='lis-item' key={item.id}>
             <label>
               <input
                 type="checkbox"
