@@ -50,8 +50,9 @@ function Appointment() {
       <div className="p-8 rounded-lg shadow-md max-w-4xl mx-auto mt-5">
         <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">About</h2>
         <h4 className="text-sm font-medium text-gray-700 leading-relaxed">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam optio ratione, et dolorum unde voluptate, id laboriosam eum ex nulla officiis error est laborum voluptatibus qui laudantium. Reprehenderit, laborum voluptate.
-        </h4>
+  Dr. Kijjo Cosmas is a dedicated and skilled veterinary doctor with over 15 years of experience in animal healthcare. He specializes in small animal medicine and surgery, providing exceptional care for pets of all kinds. Dr. Cosmas is committed to improving the health and well-being of animals through preventive care, accurate diagnoses, and effective treatments. His dedication to continuing education ensures that he stays up-to-date with the latest advancements in veterinary medicine. Outside of the clinic, Dr. Cosmas enjoys volunteering at local animal shelters and participating in community outreach programs.
+</h4>
+
       </div>
 
       <section id='testimonials' className="mt-8">

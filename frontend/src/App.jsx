@@ -13,12 +13,6 @@ import Vetclinic from './pages/Vetclinic'
 import Videovisit from './pages/videovisit'
 import Appointment from './pages/Appointment'
 import Createpost from './pages/Createpost'
-import Blog from './components/Blog'
-import Posts from './components/Posts'
-import Sidebar  from './components/Sidebar'
-import Hime from './pages/Hime'
-import Post from './components/Post'
-import Single from './pages/Single'
 import Singlepost from './components/Singlepost'
 import { useAuthContext } from './hooks/useAuthContext';
 import ChatPage from './pages/chatPage'
@@ -27,9 +21,9 @@ import Doctor from './pages/Doctor'
 import './Docprofile.css'
 import './App.css'
 import Booking from './pages/Booking'
-
-
-
+import Chatpage from './pages/chatPage'
+import Blogs from './pages/Blogs'
+import Blogpost from './pages/Blogpost'
 
 function App() {
 
@@ -56,18 +50,12 @@ function App() {
  
   <Route path="/chats" element = {<ChatPage/>}/>
   <Route path="/createpost" element = {<Createpost/>}/>
-  <Route path="/blog" element = {<Blog/>}/>
-  <Route path="/posts" element = {<Posts/>}/>
-  <Route path="/sidebar" element = {<Sidebar/>}/>
-   <Route path="/hime" element = {<Hime/>}/>
-   <Route path="/post" element = {<Post/>}/>
-   <Route path="/single" element = {<Single/>}/>
-   <Route path="/singlepost" element = {<Singlepost/>}/>
   <Route path="/rating" element= {<Rating/>}/>
   <Route path="/doctor" element= {<Doctor/>}/>
   <Route path="/booking" element= {<Booking/>}/>
-  
-  
+  <Route path="/chatpage" element={<ChatPage/>}/>
+  <Route path="/blogs" element={<Blogs/>}/>
+  <Route path="/blogpost" element={<Blogpost/>} />
   
   
   
