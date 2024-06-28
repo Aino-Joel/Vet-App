@@ -10,7 +10,7 @@ import Footers from './components/Footers'
 import ApplyDoctor from './pages/ApplyDoctor'
 import Urgentcare from'./pages/Urgentcare'
 import Vetclinic from './pages/Vetclinic'
-import Videovisit from './pages/videovisit'
+
 import Appointment from './pages/Appointment'
 import Createpost from './pages/Createpost'
 import Singlepost from './components/Singlepost'
@@ -43,10 +43,7 @@ function App() {
   <Route path ="/apply" element = {<ApplyDoctor/>}/>
   <Route path ="/urgentcare" element = {<Urgentcare/>}/>
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
-  <Route path ="/videovisit" element = {<Videovisit/>}/>
   <Route path="/appointment" element = {<Appointment/>}/>
-    
-  <Route path ="/Videovisit" element = {<Videovisit/>}/>
  
   <Route path="/chats" element = {<ChatPage/>}/>
   <Route path="/createpost" element = {<Createpost/>}/>

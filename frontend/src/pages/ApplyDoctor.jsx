@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Col, Row, Input, TimePicker } from "antd";
-import { useState } from "react";
 import { useApplyDoctor } from "../hooks/useApplyDoctor";
 
 function ApplyDoctor() {
@@ -13,23 +12,9 @@ function ApplyDoctor() {
   const [specialization, setSpecialization] = useState("");
   const [experience, setExperience] = useState("");
   const [consultationFee, setConsultationFee] = useState("");
-  // const [operationTime, setOperationTime] = useState([]);
   const { applyDoctor, error, isLoading } = useApplyDoctor();
 
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
-    console.log(
-      fName,
-      lName,
-      email,
-      phoneNumber,
-      website,
-      address,
-      specialization,
-      experience,
-      consultationFee
-      // operationTime
-    );
+  const handleSubmit = async () => {
     await applyDoctor(
       fName,
       lName,
@@ -40,18 +25,17 @@ function ApplyDoctor() {
       specialization,
       experience,
       consultationFee
-      // operationTime
     );
   };
 
   return (
-    <div className="apply-doctor">
-      <h1 className="page-title">Apply Doctor</h1>
-      <hr />
+    <div className="apply-doctor p-6 bg-white rounded-lg shadow-md">
+      <h1 className="text-3xl font-bold mb-4">Apply Doctor</h1>
+      <hr className="mb-6" />
 
       <Form layout="vertical" onFinish={handleSubmit}>
-        <h1 className="card-title">Personal Information</h1>
-        <Row gutter="20">
+        <h2 className="text-2xl font-semibold mb-4">Personal Information</h2>
+        <Row gutter={[20, 20]}>
           <Col span={8} xs={24} sm={24} lg={8}>
             <Form.Item required label="First Name">
               <Input
@@ -60,6 +44,7 @@ function ApplyDoctor() {
                 name="fName"
                 onChange={(e) => setFName(e.target.value)}
                 value={fName}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
@@ -71,6 +56,7 @@ function ApplyDoctor() {
                 name="lName"
                 onChange={(e) => setLName(e.target.value)}
                 value={lName}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
@@ -82,6 +68,7 @@ function ApplyDoctor() {
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
@@ -93,6 +80,7 @@ function ApplyDoctor() {
                 name="phoneNumber"
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 value={phoneNumber}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
@@ -104,6 +92,7 @@ function ApplyDoctor() {
                 name="website"
                 onChange={(e) => setWebsite(e.target.value)}
                 value={website}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
@@ -115,12 +104,13 @@ function ApplyDoctor() {
                 name="address"
                 onChange={(e) => setAddress(e.target.value)}
                 value={address}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
         </Row>
-        <h1 className="card-title">Professional Information</h1>
-        <Row gutter="20">
+        <h2 className="text-2xl font-semibold mb-4">Professional Information</h2>
+        <Row gutter={[20, 20]}>
           <Col span={8} xs={24} sm={24} lg={8}>
             <Form.Item required label="Specialization">
               <Input
@@ -129,6 +119,7 @@ function ApplyDoctor() {
                 name="specialization"
                 onChange={(e) => setSpecialization(e.target.value)}
                 value={specialization}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
@@ -140,6 +131,7 @@ function ApplyDoctor() {
                 name="experience"
                 onChange={(e) => setExperience(e.target.value)}
                 value={experience}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
@@ -151,24 +143,17 @@ function ApplyDoctor() {
                 name="consultationFee"
                 onChange={(e) => setConsultationFee(e.target.value)}
                 value={consultationFee}
+                className="p-2 border border-gray-300 rounded-md"
               />
             </Form.Item>
           </Col>
-          {/* <Col span={8} xs={24} sm={24} lg={8}>
-            <Form.Item required label="Operation Time">
-              <TimePicker.RangePicker
-                name="operationTime"
-                onChange={(e) => setOperationTime.push(e.target.value)}
-                value={operationTime}
-              />
-            </Form.Item>
-          </Col> */}
         </Row>
-        <div className="send">
-          <button className="primary-button" type="submit">
-            SUBMIT
-          </button>
-        </div>
+        <div class="flex justify-center mt-6">
+  <button class="bg-green-600 hover:bg-green-800 text-white font-bold py-3 px-6 rounded align-middle" type="submit">
+    SUBMIT
+  </button>
+  {error && <p class="text-red-500 mt-2">{error}</p>}
+</div>
       </Form>
     </div>
   );

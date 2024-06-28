@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Dropdown, Navbar, Button } from "flowbite-react"; // Import Button from flowbite-react
+import { Avatar, Dropdown, Navbar, Button } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -40,13 +40,20 @@ function Header() {
             <span className="block text-sm">Bonnie Green</span>
             <span className="block truncate text-sm font-medium">name@flowbite.com</span>
           </Dropdown.Header>
-          <Dropdown.Item>My Profile</Dropdown.Item>
-          <Dropdown.Item>Notifications</Dropdown.Item>
+          <Dropdown.Item>
+            <Link to="/profile">My Profile</Link>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Link to="/notifications">Notifications</Link>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Link to="/apply">Apply Doctor</Link>
+          </Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item onClick={handleClick}>Sign out</Dropdown.Item>
         </Dropdown>
         {!user && (
-          <div className="ml-4"> 
+          <div className="ml-4">
             <Link to="/signin">
               <Button gradientDuoTone="greenToBlue" outline>
                 Sign In
@@ -66,7 +73,7 @@ function Header() {
         <Navbar.Link active={path === "/projects"} as={"div"}>
           <Link to="/projects">Chat</Link>
         </Navbar.Link>
-<Navbar.Link active={path === "/doctor"} as={"div"}>
+        <Navbar.Link active={path === "/doctor"} as={"div"}>
           <Link to="/doctor">Veterinary Doctors</Link>
         </Navbar.Link>
       </Navbar.Collapse>
