@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar, Dropdown, Navbar, Button } from "flowbite-react"; // Import Button from flowbite-react
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -8,9 +8,11 @@ function Header() {
   const { logout } = useLogout();
   const { user } = useAuthContext();
   const path = useLocation().pathname;
+  const navigate = useNavigate();
 
   const handleClick = () => {
     logout();
+    navigate("/signin");
   };
 
   return (
@@ -25,28 +27,39 @@ function Header() {
         Connect
       </Link>
       <div className="flex md:order-2 items-center">
-        <Dropdown
-          arrowIcon={false}
-          inline
-          label={
-            <Avatar
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded
-            />
-          }
-        >
-          <Dropdown.Header>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-          </Dropdown.Header>
-          <Dropdown.Item>My Profile</Dropdown.Item>
-          <Dropdown.Item>Notifications</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item onClick={handleClick}>Sign out</Dropdown.Item>
-        </Dropdown>
-        {!user && (
-          <div className="ml-4"> 
+        {user ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar
+                alt="User settings"
+                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                rounded
+              />
+            }
+          >
+            <Dropdown.Header>
+              <span className="block text-sm">{`${user.fName} ${user.lName}`}</span>
+              <span className="block truncate text-sm font-medium">
+                {user.email}
+              </span>
+            </Dropdown.Header>
+            <Dropdown.Item>My Profile</Dropdown.Item>
+            <Dropdown.Item>
+              <Link to="/my-appointments">Appointments</Link>
+            </Dropdown.Item>
+            {user.isDoctor && (<Dropdown.Item>
+              <Link to="/my-blogs">My Blogs</Link>
+            </Dropdown.Item>)}
+            <Dropdown.Item>
+              <Link to="/apply">Doctor Application</Link>
+            </Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={handleClick}>Sign out</Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <div className="ml-4">
             <Link to="/signin">
               <Button gradientDuoTone="greenToBlue" outline>
                 Sign In
@@ -61,12 +74,12 @@ function Header() {
           <Link to="/">Home</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/blogs"} as={"div"}>
-          <Link to="/blogs">Blog</Link> 
+          <Link to="/blogs">Blog</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link to="/projects">Chat</Link>
+        <Navbar.Link active={path === "/chats"} as={"div"}>
+          <Link to="/chats">Chat</Link>
         </Navbar.Link>
-<Navbar.Link active={path === "/doctor"} as={"div"}>
+        <Navbar.Link active={path === "/doctor"} as={"div"}>
           <Link to="/doctor">Veterinary Doctors</Link>
         </Navbar.Link>
       </Navbar.Collapse>

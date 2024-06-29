@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom"; // Import Link from react-router-dom
 import { useAuthContext } from "../hooks/useAuthContext";
 
-function Appointment() {
+function VetProfile() {
   const { id } = useParams();
   const { user } = useAuthContext();
   const [doctor, setDoctor] = useState("");
@@ -30,6 +30,7 @@ function Appointment() {
       fetchDoctor();
     }
   }, [user]);
+  
   return (
     <div className="max-w-6xl mx-auto p-4">
       <h1 className="text-4xl font-bold text-center mb-8">Doctor's Profile</h1>
@@ -215,4 +216,4 @@ function Appointment() {
   );
 }
 
-export default Appointment;
+export default VetProfile;

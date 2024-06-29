@@ -71,30 +71,34 @@ const DoctorSelection = () => {
       <div className="doctor-list">
         {doctorsData &&
           doctorsData.map((doctor) => (
-            <Link to={`/doctor/${doctor._id}`}>
             <div
               key={doctor._id}
               className="doctor-card"
               onClick={() => handleSelectDoctor(doctor)}
             >
-              <img
-                src={doctor.image}
-                alt={doctor.lName}
-                className="doctor-image"
-              />
-              <div className="doctor-info">
-                <h2>{`${doctor.fName} ${doctor.lName}`}</h2>
-                <p>{doctor.specialization}</p>
-                <div className="doctor-rating">
-                  <span className="star">&#9733;</span> {doctor.experience}
+              <Link to={`/doctor/${doctor._id}`}>
+                <div>
+                  <img
+                    src={doctor.image}
+                    alt={doctor.lName}
+                    className="doctor-image"
+                  />
+                  <div className="doctor-info">
+                    <h2>{`${doctor.fName} ${doctor.lName}`}</h2>
+                    <p>{doctor.specialization}</p>
+                    <div className="doctor-rating">
+                      <span className="star">&#9733;</span> {doctor.experience}
+                    </div>
+                    <p className="next-available">
+                      Next available: {doctor.nextAvailable}
+                    </p>
+                    <p className="next-available">
+                      Location: {doctor.location}
+                    </p>
+                  </div>
                 </div>
-                <p className="next-available">
-                  Next available: {doctor.nextAvailable}
-                </p>
-                <p className="next-available">Location: {doctor.location}</p>
-              </div>
+              </Link>
             </div>
-            </Link>
           ))}
       </div>
       {/* {filteredDoctors.length > 3 && (
