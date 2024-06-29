@@ -7,6 +7,7 @@ const userRoutes = require("./routes/user");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const doctorRoutes = require("./routes/doctorRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 const corsOpts = {
   origin: "*",
@@ -34,6 +35,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/doctors", doctorRoutes);
+app.use("/api/blogs", blogRoutes);
 
 //connect to db
 const server = app.listen(process.env.PORT, () => {
