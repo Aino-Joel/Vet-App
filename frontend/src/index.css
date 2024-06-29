@@ -16,29 +16,7 @@ body {
       monospace;
   }
   
-  .page-title{
-    font-size: 25px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.842);
-  }
-
-  .card-title{
-    font-size: 22px;
-    font-weight: bold;
-    color: rgba(0,0,0,0.627);
-  }
-  .send{
-    direction: flex;
-    justify-content: end;
-  }
-  .primary-button{
-    background-color: black !important;
-    border-color: black !important;
-    height: 40px;
-    width:max-content;
-    color: white;
-    font-size: 16px;
-  }
+  
 body {
     height: 100vh;
   }
@@ -241,4 +219,70 @@ input, .react-datepicker-wrapper, .react-time-picker {
   box-sizing: border-box;
 }
 
+/* appointment.css */
+.appointments-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f4f4f4;
+  font-size: 16px;
+}
+
+.button-group button.active,
+.button-group button:hover {
+  background-color: #00aaff;
+  color: #fff;
+}
+
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.appointment-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.buttons button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.appointment-card h3 {
+  margin: 0 0 10px;
+}
+
+.appointment-card p {
+  margin: 5px 0;
+}
