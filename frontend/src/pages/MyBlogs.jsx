@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Button } from "flowbite-react";
 
-
 const BlogCard = ({ id, title, snippet, image, author }) => (
   <div className="h-full bg-white rounded-lg shadow-md p-6">
     <img
@@ -19,20 +18,20 @@ const BlogCard = ({ id, title, snippet, image, author }) => (
   </div>
 );
 
-const Blogs = () => {
+const MyBlogs = () => {
   const { user } = useAuthContext();
-  const [ blogs, setBlogs ] = useState("");
+  const [blogs, setBlogs] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const response = await fetch("http://localhost:5000/api/blogs", {
+      const response = await fetch("http://localhost:5000/api/blogs/my-blogs", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
       const json = await response.json();
-
+      console.log(json);
       if (response.ok) {
         setBlogs(json);
       }
@@ -48,9 +47,11 @@ const Blogs = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-4xl font-bold text-center mb-12">
-        Livestock Farming Blog
-      </h1>
+      <h1 className="text-4xl font-bold text-center mb-12">My Blogs</h1>
+      <Link to="/createpost">
+        {" "}
+        <Button gradientDuoTone="purpleToPink">Create New Post</Button>{" "}
+      </Link>
       <div className="flex flex-wrap -mx-4">
         {blogs &&
           blogs.map((blog) => (
@@ -70,4 +71,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default MyBlogs;

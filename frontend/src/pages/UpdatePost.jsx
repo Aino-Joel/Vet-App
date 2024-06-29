@@ -1,21 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextInput, Select, Button, FileInput } from "flowbite-react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-function CreatePost() {
-  const { user } = useAuthContext();
+function UpdatePost() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [snippet, setSnippet] = useState("");
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { user } = useAuthContext();
   const author = `${user.fName} ${user.lName}`;
+
+  useEffect(() => {
+    // Fetch the existing blog data based on the ID
+    const fetchBlog = async () => {
+      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+
+      if (response.ok) {
+        setTitle(json.title);
+        setBody(json.body);
+        setSnippet(json.snippet);
+      }
+      if (response.status == 401) {
+        navigate("/signin");
+      }
+    };
+
+    if (user) {
+      fetchBlog();
+    }
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const blog = {
+    const updatedBlog = {
       title,
       body,
       snippet,
@@ -23,10 +49,11 @@ function CreatePost() {
       authorId: user._id,
     };
 
+    // Update the existing blog data
     try {
-      const response = await fetch(`http://localhost:5000/api/blogs/create`, {
-        method: "POST",
-        body: JSON.stringify(blog),
+      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(updatedBlog),
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
@@ -34,12 +61,12 @@ function CreatePost() {
       });
       const json = await response.json();
       if (response.ok) {
-        console.log(json);
-        navigate(`/my-blogs`);
+        console.log("Blog Updated");
+        navigate(`/blogs/${id}`);
       }
     } catch {
       (error) => {
-        console.error("Error creating blog:", error);
+        console.error("Error updating blog:", error);
         setIsPending(false);
       };
     }
@@ -47,7 +74,7 @@ function CreatePost() {
 
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
-      <h1 className="text-center text-3xl my-7 font-semibold">Create a post</h1>
+      <h1 className="text-center text-3xl my-7 font-semibold">Update a post</h1>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
           <label className="block text-gray-700 mb-2">Title:</label>
@@ -101,11 +128,11 @@ function CreatePost() {
           </Button>
         </div>
         <Button type="submit" gradientDuoTone="purpleToPink">
-          Publish
+          Update
         </Button>
       </form>
     </div>
   );
 }
 
-export default CreatePost;
+export default UpdatePost;
