@@ -39,6 +39,7 @@ const loginUser = async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       isDoctor: user.isDoctor,
+      unseenNotifications: user.unseenNotifications,
       // pic: user.pic,
       token,
     });

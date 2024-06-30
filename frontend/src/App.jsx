@@ -37,7 +37,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
+      {user ? <Header /> : null}
 
       <Routes>
         {user ? (
@@ -51,6 +51,14 @@ function App() {
             <Route path="/createpost" element={<Createpost />} />
             <Route path="/blogs/:id/update" element={<UpdatePost />} />
             <Route path="/my-blogs" element={<MyBlogs />} />
+          </>
+        ) : null}
+
+        {user && user.isAdmin ? (
+          <>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/users" element={<UsersTable />} />
+            <Route path="/doctors" element={<DoctorsTable />} />
           </>
         ) : null}
 
@@ -75,16 +83,11 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<Blogpost />} />
 
-        <Route path="/cards" element={<Cards />} />
         <Route path="/feeds" element={<Feeds />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/location" element={<Location />} />
         <Route path="/settings" element={<Settings />} />
-
-        <Route path="/users" element={<UsersTable />} />
-        <Route path="/doctors" element={<DoctorsTable />} />
       </Routes>
-      <Footers />
+      {user ? <Footers /> : null}
     </BrowserRouter>
   );
 }
