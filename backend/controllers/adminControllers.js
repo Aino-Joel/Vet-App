@@ -79,7 +79,7 @@ const declineDoctor = async (req, res) => {
     onClickPath: "/doctor",
   });
 
-  await Doctor.findByIdAndUpdate(id, { status: "approved" });
+  await Doctor.findByIdAndUpdate(id, { status: "declined" });
 
   await User.findByIdAndUpdate(declinedUser._id, { unseenNotifications });
 
