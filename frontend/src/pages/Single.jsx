@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../components/Sidebar'
-import Singlepost from '../components/Singlepost'
+import Sidebar from '../Components/Sidebar'
+import Singlepost from '../Components/Singlepost'
 
 function Single() {
   return (

@@ -51,7 +51,7 @@ export const useApplyDoctor = () => {
     if (response.ok) {
       setIsLoading(false);
       console.log(json);
-      navigate("/");
+      navigate("/home");
     } else {
       setIsLoading(false);
       setError(json.error);
