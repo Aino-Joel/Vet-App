@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+}
+.users-table {
+    /* margin: auto; */
+    width: 80%;
+    border-collapse: collapse;
+    height: fit-content;
+  }
+  
+  .users-table th, .users-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .users-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  

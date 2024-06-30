@@ -1,0 +1,23 @@
+/* welcome.css */
+
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    background-size: cover; /* Ensure the background image covers the container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    position: relative;
+    background-image: url('Livestock-Veterinarian.jpg'); /* Path relative to the public directory */
+  }
+  
+  .welcome-text {
+    color: white; /* White text color for better visibility */
+    text-align: center; /* Center the text */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+    padding: 20px; /* Padding around the text */
+    border-radius: 10px; /* Rounded corners for the text background */
+  }
+  
