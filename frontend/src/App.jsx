@@ -86,9 +86,8 @@ function App() {
         <Route path="/feeds" element={<Feeds />} />
         <Route path="/location" element={<Location />} />
         <Route path="/settings" element={<Settings />} />
-
       </Routes>
-      <Footers />
+      {user ? <Footers /> : null}
     </BrowserRouter>
   );
 }
