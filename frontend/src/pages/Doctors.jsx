@@ -29,10 +29,10 @@ const DoctorsTable = () => {
         setLoading(false);
       }
     };
-    if (user) {
+    if (user.isAdmin) {
       fetchDoctors();
     }
-  }, []);
+  }, [user]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
