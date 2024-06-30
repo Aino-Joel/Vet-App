@@ -52,7 +52,7 @@ const approveDoctor = async (req, res) => {
 
   await Doctor.findByIdAndUpdate(id, { status: "approved" });
 
-  await User.findByIdAndUpdate(approvedUser._id, { unseenNotifications });
+  await User.findByIdAndUpdate(approvedUser._id, { isDoctor: true, unseenNotifications });
 
   if (!approvedDoctor) {
     return res.status(404).json({ error: "No such User" });
