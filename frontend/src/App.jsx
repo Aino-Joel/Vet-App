@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Header from "./components/Header";
 import Footers from "./components/Footers";
 import ApplyDoctor from "./pages/ApplyDoctor";
+import Farmvisit from "./pages/Farmvisit"
 import Urgentcare from "./pages/Urgentcare";
 import Vetclinic from "./pages/Vetclinic";
 import Videovisit from "./pages/Videovisit";
@@ -57,10 +58,10 @@ function App() {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/apply" element={<ApplyDoctor />} />
-        {/* <Route path ="/farmvisit" element = {<Farmvisit/>}/>
+         <Route path ="/farmvisit" element = {<Farmvisit/>}/>
   <Route path ="/urgentcare" element = {<Urgentcare/>}/>
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
-  <Route path ="/videovisit" element = {<Videovisit/>}/> */}
+  <Route path ="/videovisit" element = {<Videovisit/>}/> 
         <Route path="/doctor/:id" element={<VetProfile />} />
 
         <Route path="/Videovisit" element={<DoctorProfile />} />
