@@ -1,6 +1,6 @@
 import React from 'react';
 import './Admin.css';
-import AdminNavbar from '../Components/AdminNavbar';
+import AdminNavbar from '../components/AdminNavbar';
 
 const Admin = () => {
   

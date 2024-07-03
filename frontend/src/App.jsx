@@ -4,8 +4,8 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
-import Header from "./Components/Header";
-import Footers from "./Components/Footers";
+import Header from "./components/Header";
+import Footers from "./components/Footers";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import Farmvisit from "./pages/Farmvisit"
 import Urgentcare from "./pages/Urgentcare";

@@ -10,30 +10,26 @@ import "slick-carousel/slick/slick-theme.css";
 function Home() {
   const images = [
     {
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBx1AoggwXndrDxWMvFyHwL_qSqhf-g9lCKQ&s",
+      src: "https://businessfocus.co.ug/wp-content/uploads/2020/03/Goats.jpg",
       alt: "Image 1",
-      description: "Why it is important to listen to your animals"
+      description: "Best Practices for Goat Farming"
     },
     {
       src: "https://images.fineartamerica.com/images-medium-large-5/cows-feeding-in-a-barn-simon-frasertarset-archive-groupscience-photo-library.jpg",
       alt: "Image 2",
-      description: "Description for image 2"
+      description: "Guide to Cattle Breeds"
     },
     {
-      src: "https://flowbite.com/docs/images/carousel/carousel-3.svg",
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmZzeFTge9eZVudA44KmzmwXhVNnLitX7XqA&s",
       alt: "Image 3",
-      description: "Description for image 3"
+      description: "BioSecurity measures on the Farm"
     },
     {
-      src: "https://flowbite.com/docs/images/carousel/carousel-4.svg",
+      src: "https://www.monitor.co.ug/resource/blob/4296724/e308a0c7f86d34f7fca250fbc56e5249/farming02pix-data.jpg",
       alt: "Image 4",
-      description: "Description for image 4"
+      description: "Poultry Farm Management Tips"
     },
-    {
-      src: "https://flowbite.com/docs/images/carousel/carousel-5.svg",
-      alt: "Image 5",
-      description: "Description for image 5"
-    },
+  
   ];
 
   const data = [
@@ -147,17 +143,18 @@ function Home() {
 
   return (
     <div>
- <div className="relative w-full h-98 sm:h-64 xl:h-80 2xl:h-96">
+<div className="relative w-full h-98 sm:h-64 xl:h-80 2xl:h-96">
   <Carousel slideInterval={3000}>
     {images.map((image, index) => (
-      <div key={index} className="relative w-full h-full">
+      <div key={index} className="relative w-full h-64 sm:h-48 md:h-64 lg:h-72 xl:h-80 2xl:h-96">
         <img className="w-full h-full object-cover" src={image.src} alt={image.alt} />
         <div className="absolute inset-0 flex flex-col items-end justify-end bg-black bg-opacity-50 text-white p-4">
           <div className="mb-8 text-center">
             <p className="text-lg">{image.description}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
-              Click to read more
-            </button>
+            <button className="mt-4 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 transition-transform transform hover:scale-105">
+  Click to read more
+</button>
+
           </div>
         </div>
       </div>

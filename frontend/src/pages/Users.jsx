@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Users.css";
 import { useAuthContext } from "../hooks/useAuthContext";
-import AdminNavbar from "../Components/AdminNavbar";
+import AdminNavbar from "../components/AdminNavbar";
 
 const UsersTable = () => {
   const [users, setUsers] = useState([]);

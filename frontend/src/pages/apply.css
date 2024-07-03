@@ -67,7 +67,7 @@ input[type="number"]:focus {
 button.primary-button {
     width: max-content;
     padding: 10px;
-    background-color: #00aaff;
+    background-color: rgb(77, 214, 152);
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -76,7 +76,7 @@ button.primary-button {
 }
 
 button.primary-button:hover {
-    background-color: #0088cc;
+    background-color: rgba(5, 55, 5, 0.533);
 }
 
 .required {
