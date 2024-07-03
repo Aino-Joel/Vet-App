@@ -1,0 +1,44 @@
+.container{
+    display: flex;
+}
+.users-table {
+    /* margin: auto; */
+    width: 80%;
+    border-collapse: collapse;
+    height: fit-content;
+  }
+  
+  .users-table th, .users-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .users-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+
+  .actions{
+    display: flex;
+    gap: 10px;
+  }
+  
+  approve, .decline {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .approve {
+    color: green;
+  }
+  
+  .decline {
+    color: red;
+  }
+  
+  .approve:hover, .decline:hover {
+    transform: scale(1.1);
+  }
+  
