@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  
+body {
+    height: 100vh;
+  }
+  
+  .ql-editor {
+    font-size: 1.05rem;
+  }
+  .header{
+    margin: 20px;
+  }
+  .headerTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #444;
+    margin-bottom: 20px; /* Adjust as needed to reduce space */
+  }
+  
+  .headerTitlelg {
+    font-size: 48px; /* Reduced font size from 100px to 48px */
+    margin-top: 10px; /* Add margin-top to control spacing */
+    line-height: 1.2; /* Adjust line-height for better spacing */
+  }
+  
+  .headerimg {
+    width: 100%;
+    height: 450px;
+    margin-top: 20px; /* Adjust margin-top to reduce space */
+    object-fit: cover;
+  }
+  
+  /* .home{
+    display: flex;
+  } */
+  .posts{
+    
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .sidebar{
+    
+    margin: 20px;
+    padding-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+  }
+  .sidebarItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebarTitle{
+    margin: 10px;
+    padding: 5px;
+    width: 80%;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    font-size: 12px;
+    color: #222;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+  }
+  .sidebarItem >img{
+    margin-top: 15px;
+height: 250px;
+  }
+  .sidebarItem > p{
+    padding: 30px;
+  }
+.sidebarList{
+    list-style: none;
+    margin-bottom: 30px;
+}
+.sidebarListItem{
+    display: inline-block;
+    width: 50%;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.post{
+    width: 280px;
+    margin: 10px 25px 30px 25px;
+}
+.postimg{
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 7px
+}
+.postInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.postCat
+{
+    font-size: 11px;
+    color: goldenrod;
+    line-height: 20px;
+    margin-top: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.postTitle{
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.postDate{
+    font-style: italic;
+    font-size: 13px;
+    color: grey;
+    margin-top: 15px;
+}
+.postDesc{
+    font-size: 14px;
+    color: gray;
+    line-height: 24px;
+    margin-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.singlePost{
+  flex: 9;
+
+}
+.single{
+  display: flex;
+}
+.singlePostWrapper{
+  padding: 20px;
+  padding-right: 0;
+}
+.singlePostimg{
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.singlePostTitle{
+  text-align: center;
+  margin: 10px;
+  font-size: 20px;
+}
+.singlePostEdit{
+float: right;
+font-size: 16px;
+}
+.singlePosticon{
+  margin-left: 10px;
+  cursor: pointer;
+}
+.singlePosticon:first-child{
+  color: teal;
+}
+.singlePosticon:last-child{
+  color:tomato;
+}
+.singlePostInfo{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size:16px;
+  color: goldenrod;
+}
+.singlePostDate{
+  color: grey;
+  font-size: 18px;
+}
+.singlePostDesc{
+  color: grey;
+  font-size: 18px;
+  line-height: 25px;
+}
+.singlePostDesc::first-letter{
+  margin-left: 20px;
+  font-size:30px;
+  font-weight: 600;
+}
+
+
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, .react-datepicker-wrapper, .react-time-picker {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* appointment.css */
+.appointments-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f4f4f4;
+  font-size: 16px;
+}
+
+.button-group button.active,
+.button-group button:hover {
+  background-color: #00aaff;
+  color: #fff;
+}
+
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.appointment-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.buttons button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.appointment-card h3 {
+  margin: 0 0 10px;
+}
+
+.appointment-card p {
+  margin: 5px 0;
+}

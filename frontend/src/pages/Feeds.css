@@ -1,0 +1,18 @@
+.container {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  .loader {
+    margin-top: 50px;
+    font-size: 24px;
+    color: #e53935;
+    text-align: center;
+  }
+
+  .listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
