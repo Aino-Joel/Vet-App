@@ -1,0 +1,34 @@
+.container {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  .scrollViewContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section {
+    margin-bottom: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e53935;
+    margin-bottom: 10px;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .optionText {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+  }
