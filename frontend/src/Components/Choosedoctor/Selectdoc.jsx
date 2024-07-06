@@ -51,7 +51,6 @@ const DoctorSelection = () => {
 );
 
 
-  const handleSelectDoctor = (doctor) => {};
 
   const toggleShowDoctors = () => {
     setShowAllDoctors((prevState) => !prevState);
@@ -68,14 +67,13 @@ const DoctorSelection = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-      </div>
+      </div>/
       <div className="doctor-list">
         {doctorsData &&
           filteredDoctors.map((doctor) => (
             <div
               key={doctor._id}
               className="doctor-card"
-              onClick={() => handleSelectDoctor(doctor)}
             >
               <Link to={`/doctor/${doctor._id}`}>
                 <div>
