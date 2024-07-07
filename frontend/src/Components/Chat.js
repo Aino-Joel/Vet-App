@@ -34,6 +34,14 @@ const ChatArea = ({ selectedUser }) => {
         />
         <button onClick={handleSend} className="chat-send-button">
           Send
+
+
+
+
+
+
+
+          
         </button>
       </div>
     </div>
