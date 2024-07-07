@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Button } from "flowbite-react";
 
-
 const BlogCard = ({ id, title, snippet, image, author }) => (
   <div className="h-full bg-white rounded-lg shadow-md p-6">
     <img
@@ -21,8 +20,9 @@ const BlogCard = ({ id, title, snippet, image, author }) => (
 
 const Blogs = () => {
   const { user } = useAuthContext();
-  const [ blogs, setBlogs ] = useState("");
+  const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -46,14 +46,31 @@ const Blogs = () => {
     }
   }, [user]);
 
+  const filteredBlogs = blogs.filter((blog) =>
+    Object.values(blog).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-4xl font-bold text-center mb-12">
         Livestock Farming Blog
       </h1>
+      <div className="search-bar">
+        <i className="fas fa-search search-icon"></i>
+        <input
+          type="text"
+          placeholder="Search by name or specialty"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
       <div className="flex flex-wrap -mx-4">
         {blogs &&
-          blogs.map((blog) => (
+          filteredBlogs.map((blog) => (
             <div key={blog._id} className="w-full md:w-1/3 p-4">
               <Link to={`/blogs/${blog._id}`}>
                 <BlogCard

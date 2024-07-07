@@ -17,7 +17,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 const DoctorSelection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showAllDoctors, setShowAllDoctors] = useState(false);
-  const [doctorsData, setDoctorsData] = useState("");
+  const [doctorsData, setDoctorsData] = useState([]);
   const navigate = useNavigate();
 
   const { user } = useAuthContext();
@@ -44,13 +44,13 @@ const DoctorSelection = () => {
     }
   }, [user]);
 
-  // const filteredDoctors = doctorsData.filter(doctor =>
-  //   doctor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //   doctor.specialty.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //   doctor.location.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
+  const filteredDoctors = doctorsData.filter(doctor => 
+    Object.values(doctor).some(value => 
+        typeof value === 'string' && value.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+);
 
-  const handleSelectDoctor = (doctor) => {};
+
 
   const toggleShowDoctors = () => {
     setShowAllDoctors((prevState) => !prevState);
@@ -67,14 +67,13 @@ const DoctorSelection = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-      </div>
+      </div>/
       <div className="doctor-list">
         {doctorsData &&
-          doctorsData.map((doctor) => (
+          filteredDoctors.map((doctor) => (
             <div
               key={doctor._id}
               className="doctor-card"
-              onClick={() => handleSelectDoctor(doctor)}
             >
               <Link to={`/doctor/${doctor._id}`}>
                 <div>
