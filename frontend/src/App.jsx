@@ -2,17 +2,13 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Projects from "./pages/Projects";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Header from "./Components/Header";
 import Footers from "./Components/Footers";
 import ApplyDoctor from "./pages/ApplyDoctor";
-import Urgentcare from "./pages/Urgentcare";
-import Vetclinic from "./pages/Vetclinic";
-import Videovisit from "./pages/Videovisit";
 import Createpost from "./pages/Createpost";
-import Singlepost from "./Components/Singlepost";
+import Singlepost from "./components/Singlepost";
 import { useAuthContext } from "./hooks/useAuthContext";
 import ChatPage from "./pages/chatPage";
 import Rating from "./pages/Rating";
@@ -28,21 +24,27 @@ import VetProfile from "./pages/VetProfile";
 import Appointments from "./pages/Appointments";
 import UpdatePost from "./pages/UpdatePost";
 import MyBlogs from "./pages/MyBlogs";
+import Cards from "./pages/Cards";
+import Feeds from "./pages/Feeds";
+import Admin from "./pages/Admin";
+import Location from "./pages/Location";
+import Settings from "./pages/Settings";
+import Landing from "./pages/Landing";
+import UsersTable from "./pages/Users";
+import DoctorsTable from "./pages/Doctors";
 
 function App() {
   const { user } = useAuthContext();
 
   return (
     <BrowserRouter>
-      <Header />
+      {user ? <Header /> : null}
 
       <Routes>
         {user ? (
-          <>
-            <Route path="/" element={<Home />} />
-          </>
+          <Route path="/home" element={<Home />} />
         ) : (
-          <Route path="/signin" element={<Signin />} />
+          <Route path="/" element={<Landing />} />
         )}
 
         {user && user.isDoctor ? (
@@ -53,14 +55,20 @@ function App() {
           </>
         ) : null}
 
+        {user && user.isAdmin ? (
+          <>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/users" element={<UsersTable />} />
+            <Route path="/doctors" element={<DoctorsTable />} />
+          </>
+        ) : null}
+
+        <Route path="/signin" element={<Signin />} />
         <Route path="/about" element={<About />} />
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/apply" element={<ApplyDoctor />} />
-        {/* <Route path ="/farmvisit" element = {<Farmvisit/>}/>
-  <Route path ="/urgentcare" element = {<Urgentcare/>}/>
-  <Route path ="/vetclinic" element = {<Vetclinic/>}/>
-  <Route path ="/videovisit" element = {<Videovisit/>}/> */}
+
         <Route path="/doctor/:id" element={<VetProfile />} />
 
         <Route path="/Videovisit" element={<DoctorProfile />} />
@@ -75,8 +83,12 @@ function App() {
         <Route path="/chatpage" element={<ChatPage />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<Blogpost />} />
+
+        <Route path="/feeds" element={<Feeds />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
-      <Footers />
+      {user ? <Footers /> : null}
     </BrowserRouter>
   );
 }

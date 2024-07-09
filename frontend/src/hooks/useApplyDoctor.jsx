@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/toast";
 import { useAuthContext } from "./useAuthContext";
 
 export const useApplyDoctor = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
-  const navigate = useNavigate();
+  const toast = useToast();
   const { user } = useAuthContext();
 
   const applyDoctor = async (
@@ -17,7 +17,7 @@ export const useApplyDoctor = () => {
     address,
     specialization,
     experience,
-    consultationFee,
+    consultationFee
     // operationTime
   ) => {
     setIsLoading(true);
@@ -51,7 +51,28 @@ export const useApplyDoctor = () => {
     if (response.ok) {
       setIsLoading(false);
       console.log(json);
-      navigate("/");
+      if (json == "Already Exists") {
+        toast({
+          title: "Already Exists",
+          description: "Already Exists",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top-center",
+        });
+      } else {
+        toast({
+          title: "Successful Application!",
+          description: "Successful Application",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top-center",
+        });
+      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000);
     } else {
       setIsLoading(false);
       setError(json.error);

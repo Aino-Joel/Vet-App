@@ -12,13 +12,13 @@ function Header() {
 
   const handleClick = () => {
     logout();
-    navigate("/signin");
+    navigate("/");
   };
 
   return (
     <Navbar fluid rounded>
       <Link
-        to="/"
+        to="/home"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
       >
         <span className="px-2 py-1 bg-gradient-to-r from-green-800 via-green-500 to-green-300 rounded-lg text-white">
@@ -70,8 +70,8 @@ function Header() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link active={path === "/"} as={"div"}>
-          <Link to="/">Home</Link>
+        <Navbar.Link active={path === "/home"} as={"div"}>
+          <Link to="/home">Home</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/blogs"} as={"div"}>
           <Link to="/blogs">Blog</Link>

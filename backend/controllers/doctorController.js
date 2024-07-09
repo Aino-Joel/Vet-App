@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 //get all Doctors
 const getDoctors = async (req, res) => {
-  const doctors = await Doctor.find({ status: "pending" });
+  const doctors = await Doctor.find({ status: "approved" });
 
   res.status(200).json(doctors);
 };

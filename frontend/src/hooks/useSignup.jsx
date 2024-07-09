@@ -28,7 +28,7 @@ export const useSignup = () => {
 
       setIsLoading(false);
 
-      navigate("/")
+      navigate("/home")
     } else {
         setIsLoading(false);
         setError(json.error);
