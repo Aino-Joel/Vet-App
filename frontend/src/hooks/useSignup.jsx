@@ -15,7 +15,7 @@ export const useSignup = () => {
     const response = await fetch("http://localhost:5000/api/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fName, lName, email, password }),
+      body: JSON.stringify({ fName, lName, email, password, pic }),
     });
     const json = await response.json();
 
@@ -28,7 +28,7 @@ export const useSignup = () => {
 
       setIsLoading(false);
 
-      navigate("/home")
+      navigate("/")
     } else {
         setIsLoading(false);
         setError(json.error);
