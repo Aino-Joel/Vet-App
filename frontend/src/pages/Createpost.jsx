@@ -81,23 +81,21 @@ function CreatePost() {
           />
         </div>
         <label className="block text-gray-700 mb-2">Body:</label>
-        <ReactQuill
-          theme="snow"
+        <textarea
           placeholder="Write something..."
           className="h-72 mb-12"
           required
           value={body}
-          onChange={setBody}
-        />
+          onChange={(e) => setBody(e.target.value)}
+        ></textarea>
         <label className="block text-gray-700 mb-2">Snippet:</label>
-        <ReactQuill
-          theme="snow"
+        <textarea
           placeholder="Write something..."
           className="h-72 mb-12"
           required
           value={snippet}
-          onChange={setSnippet}
-        />
+          onChange={(e) => setSnippet(e.target.value)}
+        ></textarea>
         <div className="flex gap-4 items-center border-4 border-teal-500 border-dotted p-3">
           <FileInput
             type="file"
@@ -105,14 +103,14 @@ function CreatePost() {
             accept=".jpeg, .png, .jpg"
             onChange={(e) => handleFileUpload(e)}
           />
-          <Button
+          {/* <Button
             type="button"
             gradientDuoTone="purpleToBlue"
             size="sm"
             outline
           >
             Upload Image
-          </Button>
+          </Button> */}
         </div>
         <Button type="submit" gradientDuoTone="purpleToPink">
           Publish
