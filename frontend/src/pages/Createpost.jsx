@@ -12,6 +12,7 @@ function CreatePost() {
   const [snippet, setSnippet] = useState("");
   const navigate = useNavigate();
   const author = `${user.fName} ${user.lName}`;
+  const [image, setImage] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ function CreatePost() {
       snippet,
       author,
       authorId: user._id,
+      image
     };
 
     try {
@@ -44,6 +46,13 @@ function CreatePost() {
       };
     }
   };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    console.log(base64)
+    setImage(base64)
+  }
 
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
@@ -90,7 +99,12 @@ function CreatePost() {
           onChange={setSnippet}
         />
         <div className="flex gap-4 items-center border-4 border-teal-500 border-dotted p-3">
-          <FileInput type="file" accept="image/*" />
+          <FileInput
+            type="file"
+            id="image"
+            accept=".jpeg, .png, .jpg"
+            onChange={(e) => handleFileUpload(e)}
+          />
           <Button
             type="button"
             gradientDuoTone="purpleToBlue"
@@ -109,3 +123,16 @@ function CreatePost() {
 }
 
 export default CreatePost;
+
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result)
+    };
+    fileReader.onerror = (error) => {
+      reject(error)
+    }
+  })
+}

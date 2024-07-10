@@ -78,7 +78,7 @@ const DoctorSelection = () => {
               <Link to={`/doctor/${doctor._id}`}>
                 <div>
                   <img
-                    src={doctor.image}
+                    src={doctor.pic}
                     alt={doctor.lName}
                     className="doctor-image"
                   />

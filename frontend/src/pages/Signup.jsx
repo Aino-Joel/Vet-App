@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
+import { Alert, Button, Label, Spinner, TextInput, FileInput } from "flowbite-react";
 import { useSignup } from "../hooks/useSignup";
 
 function Signup() {
@@ -81,7 +81,7 @@ function Signup() {
             </div>
             <div>
               <Label value="Your Profile Picture" />
-              <Input
+              <FileInput
                 type="file"
                 id="pic"
                 accept=".jpeg, .png, .jpg"

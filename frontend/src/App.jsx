@@ -8,7 +8,7 @@ import Header from "./Components/Header";
 import Footers from "./Components/Footers";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import Createpost from "./pages/Createpost";
-import Singlepost from "./components/Singlepost";
+import Singlepost from "./Components/Singlepost";
 import { useAuthContext } from "./hooks/useAuthContext";
 import ChatPage from "./pages/chatPage";
 import Rating from "./pages/Rating";
@@ -32,6 +32,8 @@ import Settings from "./pages/Settings";
 import Landing from "./pages/Landing";
 import UsersTable from "./pages/Users";
 import DoctorsTable from "./pages/Doctors";
+import MyBookings from "./pages/MyBookings";
+import Reschedule from "./pages/Reschedule";
 
 function App() {
   const { user } = useAuthContext();
@@ -52,6 +54,8 @@ function App() {
             <Route path="/createpost" element={<Createpost />} />
             <Route path="/blogs/:id/update" element={<UpdatePost />} />
             <Route path="/my-blogs" element={<MyBlogs />} />
+            <Route path="/my-bookings" element={<MyBookings />} />
+            <Route path="/my-bookings/:id" element={<Reschedule />} />
           </>
         ) : null}
 
@@ -79,6 +83,7 @@ function App() {
         <Route path="/doctor" element={<Doctor />} />
         <Route path="/doctor/:id/booking" element={<Booking />} />
         <Route path="/my-appointments" element={<Appointments />} />
+        <Route path="/my-appointments/:id" element={<Reschedule />} />
 
         <Route path="/chatpage" element={<ChatPage />} />
         <Route path="/blogs" element={<Blogs />} />

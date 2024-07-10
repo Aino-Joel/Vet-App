@@ -37,7 +37,7 @@ function VetProfile() {
 
       {doctor && (<div className="flex flex-col sm:flex-row justify-center items-center p-8 rounded-lg shadow-md">
         <img
-          src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+          src={doctor.pic}
           alt="Dr Cosmas Kijjo"
           className="w-24 h-24 rounded-full object-cover"
         />

@@ -8,7 +8,7 @@ export const useSignup = () => {
   const { dispatch } = useAuthContext();
   const navigate = useNavigate()
 
-  const signup = async (fName, lName, email, password) => {
+  const signup = async (fName, lName, email, password, pic) => {
     setIsLoading(true);
     setError(null);
 
@@ -28,7 +28,7 @@ export const useSignup = () => {
 
       setIsLoading(false);
 
-      navigate("/")
+      navigate("/home")
     } else {
         setIsLoading(false);
         setError(json.error);
