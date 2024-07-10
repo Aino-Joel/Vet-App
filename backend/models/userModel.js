@@ -23,6 +23,14 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    phoneNumber: {
+      type: String,
+      required: false,
+    },
+    address: {
+      type: String,
+      required: false,
+    },
     isDoctor: {
       type: Boolean,
       default: false,
@@ -112,4 +120,5 @@ userSchema.statics.login = async function (email, password) {
   return user;
 };
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+module.exports = User

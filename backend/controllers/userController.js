@@ -40,6 +40,7 @@ const loginUser = async (req, res) => {
       isAdmin: user.isAdmin,
       isDoctor: user.isDoctor,
       pic: user.pic,
+      unseenNotifications: user.unseenNotifications,
       token,
     });
   } catch (error) {
@@ -65,6 +66,7 @@ const signupUser = async (req, res) => {
       isAdmin: user.isAdmin,
       isDoctor: user.isDoctor,
       pic: user.pic,
+      unseenNotifications: user.unseenNotifications,
       token,
     });
   } catch (error) {
@@ -88,7 +90,7 @@ const applyDoctor = async (req, res) => {
         doctorId: newDoctor._id,
         name: newDoctor.fName + " " + newDoctor.lName,
       },
-      onClickPath: "/admin/doctors",
+      onClickPath: "/doctors",
     });
     await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
     res.status(200).json("Success")

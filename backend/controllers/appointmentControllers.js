@@ -63,6 +63,16 @@ const createAppointment = async (req, res) => {
     try {
         const vet = await Doctor.findById(req.body.vetId)
         const appointment = await Appointment.create({ ...req.body, vetName: `${vet.fName} ${vet.lName}` });
+
+        const unseenNotifications = vet.unseenNotifications;
+        unseenNotifications.push({
+            type: "Appointment request",
+            message: `${appointment.patientName} has requested for an appointment`,
+            onClickPath: "/my-bookings",
+        });
+
+        await User.findByIdAndUpdate(vet._id, { unseenNotifications });
+
         res.status(200).json(appointment);
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -78,6 +88,17 @@ const deleteAppointment = async (req, res) => {
     }
 
     const appointment = await Appointment.findOneAndDelete({ _id: id });
+
+    const declinedUser = await User.findOne({ _id: appointment.patientId });
+
+    const unseenNotifications = declinedUser.unseenNotifications;
+    unseenNotifications.push({
+        type: " Appointment cancelled",
+        message: `Your Appointment with ${appointment.vetName} was cancelled`,
+        onClickPath: "/my-appointments",
+    });
+
+    await User.findByIdAndUpdate(declinedUser._id, { unseenNotifications });
 
     if (!appointment) {
         return res.status(404).json({ error: "No such Appointment" });
@@ -101,6 +122,17 @@ const rescheduleAppointment = async (req, res) => {
         }
     );
 
+    const rescheduledUser = await User.findOne({ _id: appointment.patientId });
+
+    const unseenNotifications = rescheduledUser.unseenNotifications;
+    unseenNotifications.push({
+        type: " Appointment rescheduled",
+        message: "Your appointment was rescheduled",
+        onClickPath: "/my-appointments",
+    });
+
+    await User.findByIdAndUpdate(rescheduledUser._id, { unseenNotifications });
+    
     if (!appointment) {
         return res.status(404).json({ error: "No such Appointment" });
     }
@@ -122,7 +154,7 @@ const approveAppointment = async (req, res) => {
     const unseenNotifications = approvedUser.unseenNotifications;
     unseenNotifications.push({
         type: "Vet Appointment approved",
-        message: "Your Appointment was approved",
+        message: `Your Appointment with ${approvedAppointment.vetName} was approved`,
         onClickPath: "/my-appointments",
     });
 
@@ -151,7 +183,7 @@ const declineAppointment = async (req, res) => {
     const unseenNotifications = declinedUser.unseenNotifications;
     unseenNotifications.push({
         type: "Appointment request declined",
-        message: "Your Appointment was declined",
+        message: `Your Appointment with ${declinedAppointment.vetName} was declined`,
         onClickPath: "/my-appointments",
     });
 

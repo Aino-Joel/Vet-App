@@ -28,5 +28,4 @@ const getDoctor = async (req, res) => {
 module.exports = {
   getDoctors,
   getDoctor,
-//   updateDoctor,
 };
