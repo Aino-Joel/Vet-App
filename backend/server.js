@@ -9,6 +9,7 @@ const messageRoutes = require("./routes/messageRoutes");
 const doctorRoutes = require("./routes/doctorRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const appointmentRoutes = require("./routes/appointmentRoutes")
 
 const corsOpts = {
   origin: "*",
@@ -38,6 +39,7 @@ app.use("/api/message", messageRoutes);
 app.use("/api/doctors", doctorRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/appointments", appointmentRoutes);
 
 //connect to db
 const server = app.listen(process.env.PORT, () => {

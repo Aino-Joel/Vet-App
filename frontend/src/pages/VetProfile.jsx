@@ -30,14 +30,14 @@ function VetProfile() {
       fetchDoctor();
     }
   }, [user]);
-  
+
   return (
     <div className="max-w-6xl mx-auto p-4">
       <h1 className="text-4xl font-bold text-center mb-8">Doctor's Profile</h1>
 
       {doctor && (<div className="flex flex-col sm:flex-row justify-center items-center p-8 rounded-lg shadow-md">
         <img
-          src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+          src={doctor.pic ? doctor.pic : "https://flowbite.com/docs/images/people/profile-picture-5.jpg"}
           alt="Dr Cosmas Kijjo"
           className="w-24 h-24 rounded-full object-cover"
         />
@@ -47,7 +47,7 @@ function VetProfile() {
               {`Dr. ${doctor.fName} ${doctor.lName}`}
             </h2>
             <h6 className="text-sm font-bold text-gray-700">
-             {`Specialization: ${doctor.specialization}`}
+              {`Specialization: ${doctor.specialization}`}
             </h6>
           </div>
           <div className="flex space-x-16 justify-center sm:justify-start">
@@ -89,8 +89,8 @@ function VetProfile() {
           About
         </h2>
         <h4 className="text-sm font-medium text-gray-700 leading-relaxed">
-  Dr. Kijjo Cosmas is a dedicated and skilled veterinary doctor with over 15 years of experience in animal healthcare. He specializes in small animal medicine and surgery, providing exceptional care for pets of all kinds. Dr. Cosmas is committed to improving the health and well-being of animals through preventive care, accurate diagnoses, and effective treatments. His dedication to continuing education ensures that he stays up-to-date with the latest advancements in veterinary medicine. Outside of the clinic, Dr. Cosmas enjoys volunteering at local animal shelters and participating in community outreach programs.
-</h4>
+          Dr. Kijjo Cosmas is a dedicated and skilled veterinary doctor with over 15 years of experience in animal healthcare. He specializes in small animal medicine and surgery, providing exceptional care for pets of all kinds. Dr. Cosmas is committed to improving the health and well-being of animals through preventive care, accurate diagnoses, and effective treatments. His dedication to continuing education ensures that he stays up-to-date with the latest advancements in veterinary medicine. Outside of the clinic, Dr. Cosmas enjoys volunteering at local animal shelters and participating in community outreach programs.
+        </h4>
 
       </div>
 

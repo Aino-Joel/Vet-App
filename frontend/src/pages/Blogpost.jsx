@@ -51,7 +51,7 @@ const Blogpost = () => {
           <p className="mb-4">Written By: {blog.author}</p>
           <img
             className="w-full h-64 object-cover rounded-lg mb-4"
-            src="https://jaguzafarm.com/support/wp-content/uploads/2023/06/Goats-farm-678x450.jpg"
+            src={blog.image}
             alt="Goat Farming"
           />
 
