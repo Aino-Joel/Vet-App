@@ -175,7 +175,7 @@ function Home() {
             <Link to="/urgentcare">This is <span className="font-medium text-gray-800 dark:text-white">Vet-Clinics tab's associated content</span>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</Link>
           </Tabs.Item>
           <Tabs.Item title="Vet-Clinics" icon={MdLocalHospital}>
-            <Link to="/vetclinics">This is <span className="font-medium text-gray-800 dark:text-white">Vet-Clinics tab's associated content</span>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</Link>
+            <Link to="/vetclinics">This is to show the veterinary clinics near you and contacts in order to contact the doctors for help <span className="font-medium text-gray-800 dark:text-white"><Link to='/vetclinic'>Click to view</Link></span></Link>
           </Tabs.Item>
         </Tabs>
       </div>

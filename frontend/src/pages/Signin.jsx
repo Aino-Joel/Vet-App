@@ -21,10 +21,7 @@ function Signin() {
           <p className="text-3xl font-extrabold mt-5 text-center bg-gradient-to-r from-green-800 via-green-400 to-blue-600 text-transparent bg-clip-text shadow-lg py-2 rounded-lg">
             SIGN IN
           </p>
-          <div className="flex space-x-4 mt-5">
-            <Button>As a Farmer</Button>
-            <Button>As a Veterinary Doctor</Button>
-          </div>
+          
         </div>
         <div className="flex-1">
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
