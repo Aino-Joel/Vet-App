@@ -39,8 +39,8 @@ const loginUser = async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       isDoctor: user.isDoctor,
+      pic: user.pic,
       unseenNotifications: user.unseenNotifications,
-      // pic: user.pic,
       token,
     });
   } catch (error) {
@@ -50,10 +50,10 @@ const loginUser = async (req, res) => {
 
 //signup user
 const signupUser = async (req, res) => {
-  const { fName, lName, email, password } = req.body;
+  const { fName, lName, email, password, pic } = req.body;
 
   try {
-    const user = await User.signup(fName, lName, email, password);
+    const user = await User.signup(fName, lName, email, password, pic);
 
     //create token
     const token = createToken(user._id);
@@ -65,7 +65,8 @@ const signupUser = async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       isDoctor: user.isDoctor,
-      // pic: user.pic,
+      pic: user.pic,
+      unseenNotifications: user.unseenNotifications,
       token,
     });
   } catch (error) {
@@ -76,48 +77,23 @@ const signupUser = async (req, res) => {
 //apply doctor
 const applyDoctor = async (req, res) => {
   try {
-    const applicationExists = await Doctor.findOne({ userId: req.body.userId });
-    if (applicationExists) {
-      if (!(applicationExists.status == "approved")) {
-        await Doctor.findByIdAndUpdate(applicationExists._id, {
-          status: "pending",
-        });
-        const adminUser = await User.findOne({ isAdmin: true });
+    
+    const newDoctor = new Doctor({ ...req.body, status: "pending" });
+    await newDoctor.save();
+    const adminUser = await User.findOne({ isAdmin: true });
 
-        const unseenNotifications = adminUser.unseenNotifications;
-        unseenNotifications.push({
-          type: "new doctor request",
-          message: `${applicationExists.fName} ${applicationExists.lName} has re-applied for doctor account`,
-          data: {
-            doctorId: applicationExists._id,
-            name: `${applicationExists.fName} ${applicationExists.lName}`,
-          },
-          onClickPath: "/admin/doctors",
-        });
-        await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
-        res.status(200).json("Success");
-      } else {
-        res.status(200).json("Already Exists");
-      }
-    } else {
-      const newDoctor = new Doctor({ ...req.body, status: "pending" });
-      await newDoctor.save();
-
-      const adminUser = await User.findOne({ isAdmin: true });
-
-      const unseenNotifications = adminUser.unseenNotifications;
-      unseenNotifications.push({
-        type: "new doctor request",
-        message: `${newDoctor.fName} ${newDoctor.lName} has applied for doctor account`,
-        data: {
-          doctorId: newDoctor._id,
-          name: newDoctor.fName + " " + newDoctor.lName,
-        },
-        onClickPath: "/admin/doctors",
-      });
-      await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
-      res.status(200).json("Success");
-    }
+    const unseenNotifications = adminUser.unseenNotifications;
+    unseenNotifications.push({
+      type: "new doctor request",
+      message: `${newDoctor.fName} ${newDoctor.lName} has applied for doctor account`,
+      data: {
+        doctorId: newDoctor._id,
+        name: newDoctor.fName + " " + newDoctor.lName,
+      },
+      onClickPath: "/doctors",
+    });
+    await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
+    res.status(200).json("Success")
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

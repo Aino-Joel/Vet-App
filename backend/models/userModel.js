@@ -23,6 +23,14 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    phoneNumber: {
+      type: String,
+      required: false,
+    },
+    address: {
+      type: String,
+      required: false,
+    },
     isDoctor: {
       type: Boolean,
       default: false,
@@ -39,6 +47,10 @@ const userSchema = new Schema(
       type: Array,
       default: [],
     },
+    pic: {
+      type: String,
+      required: true
+    }
   },
   {
     timestamps: true,
@@ -46,9 +58,9 @@ const userSchema = new Schema(
 );
 
 //static signup method
-userSchema.statics.signup = async function (fName, lName, email, password) {
+userSchema.statics.signup = async function (fName, lName, email, password, pic) {
   //validation
-  if (!fName || !lName || !email || !password) {
+  if (!fName || !lName || !email || !password || !pic) {
     throw Error("All fields should be filled");
   }
   if (!validator.isEmail(email)) {
@@ -76,6 +88,7 @@ userSchema.statics.signup = async function (fName, lName, email, password) {
     lName,
     email,
     password: hash,
+    pic
   });
 
   return user;
@@ -107,4 +120,5 @@ userSchema.statics.login = async function (email, password) {
   return user;
 };
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+module.exports = User

@@ -21,7 +21,11 @@ const blogSchema = new Schema({
     authorId: {
         type: String,
         required: true 
-    }
+    },
+    image: {
+        type: String,
+        required: true
+      }
 }, { timestamps: true });
 
 const Blog = mongoose.model('Blog', blogSchema);

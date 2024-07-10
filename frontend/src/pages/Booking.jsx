@@ -3,14 +3,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "tailwindcss/tailwind.css"; // Ensure Tailwind CSS is imported
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useParams } from "react-router-dom";
 
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("10:00");
-  const [name, setName] = useState("");
+  const [patientName, setPatientName] = useState("");
   const [email, setEmail] = useState("");
   const [extraInfo, setExtraInfo] = useState("");
   const { user } = useAuthContext();
+  const { id } = useParams()
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -20,12 +22,43 @@ const Booking = () => {
     setSelectedTime(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     alert(
-      `Appointment booked for ${name} on ${selectedDate.toDateString()} at ${selectedTime}. Extra Info: ${extraInfo}`
+      `Appointment booked for ${patientName} on ${selectedDate.toDateString()} at ${selectedTime}. Extra Info: ${extraInfo}`
     );
-    // Here you can also add code to send the data to your server or API.
+
+    const appointment = {
+      vetId: id,
+      patientId: user._id,
+      patientName,
+      email,
+      date: selectedDate,
+      time: selectedTime,
+      additionalInfo: extraInfo,
+    };
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/appointments/create`, {
+        method: "POST",
+        body: JSON.stringify(appointment),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const json = await response.json();
+      if (response.ok) {
+        console.log(json);
+        navigate(`/my-appointments`);
+      }
+      console.log(appointment)
+    } catch {
+      (error) => {
+        console.error("Error creating appointment:", error);
+        setIsPending(false);
+      };
+    }
   };
 
   return (
@@ -39,7 +72,7 @@ const Booking = () => {
           <input
             type="text"
             value={`${user.fName} ${user.lName}`}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setPatientName(e.target.value)}
             required
             // placeholder='Your Name i.e John Doe'
             className="w-full px-3 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

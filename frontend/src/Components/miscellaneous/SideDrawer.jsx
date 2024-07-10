@@ -153,7 +153,7 @@ function SideDrawer() {
             </Text>
           </Button>
         </Tooltip>
-        <div>
+        {/* <div>
           <Menu>
             <MenuButton p={1}>
               <NotificationBadge
@@ -193,10 +193,10 @@ function SideDrawer() {
                 <MenuItem>My Profile</MenuItem>{" "}
               </ProfileModal>
               <MenuDivider />
-              {/* <MenuItem onClick={logoutHandler}>Logout</MenuItem> */}
+              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
             </MenuList>
           </Menu>
-        </div>
+        </div> */}
       </Box>
 
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>

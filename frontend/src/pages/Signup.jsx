@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
+import { Alert, Button, Label, Spinner, TextInput, FileInput } from "flowbite-react";
 import { useSignup } from "../hooks/useSignup";
 
 function Signup() {
@@ -8,14 +8,21 @@ function Signup() {
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const status = 'student'
+  const [pic, setPic] = useState("")
   const { signup, error, isLoading } = useSignup();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signup(fName, lName, email, password);
+    await signup(fName, lName, email, password, pic);
   };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    console.log(base64)
+    setPic(base64)
+  }
 
   return (
     <div className="min-h-screen mt-20">
@@ -72,6 +79,15 @@ function Signup() {
                 value={password}
               />
             </div>
+            <div>
+              <Label value="Your Profile Picture" />
+              <FileInput
+                type="file"
+                id="pic"
+                accept=".jpeg, .png, .jpg"
+                onChange={(e) => handleFileUpload(e)}
+              />
+            </div>
             <Button
               className="bg-gradient-to-r from-green-800 via-green-500 to-green-300"
               type="submit"
@@ -94,3 +110,17 @@ function Signup() {
 }
 
 export default Signup;
+
+
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result)
+    };
+    fileReader.onerror = (error) => {
+      reject(error)
+    }
+  })
+}

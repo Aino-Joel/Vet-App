@@ -13,6 +13,7 @@ function UpdatePost() {
   const { id } = useParams();
   const { user } = useAuthContext();
   const author = `${user.fName} ${user.lName}`;
+  const [image, setImage] = useState("")
 
   useEffect(() => {
     // Fetch the existing blog data based on the ID
@@ -47,6 +48,7 @@ function UpdatePost() {
       snippet,
       author,
       authorId: user._id,
+      image
     };
 
     // Update the existing blog data
@@ -71,6 +73,13 @@ function UpdatePost() {
       };
     }
   };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    console.log(base64)
+    setImage(base64)
+  }
 
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
@@ -99,33 +108,36 @@ function UpdatePost() {
           />
         </div>
         <label className="block text-gray-700 mb-2">Body:</label>
-        <ReactQuill
-          theme="snow"
+        <textarea
           placeholder="Write something..."
           className="h-72 mb-12"
           required
           value={body}
-          onChange={setBody}
-        />
+          onChange={(e) => setBody(e.target.value)}
+        ></textarea>
         <label className="block text-gray-700 mb-2">Snippet:</label>
-        <ReactQuill
-          theme="snow"
+        <textarea
           placeholder="Write something..."
           className="h-72 mb-12"
           required
           value={snippet}
-          onChange={setSnippet}
-        />
+          onChange={(e) => setSnippet(e.target.value)}
+        ></textarea>
         <div className="flex gap-4 items-center border-4 border-teal-500 border-dotted p-3">
-          <FileInput type="file" accept="image/*" />
-          <Button
+          <FileInput
+            type="file"
+            id="image"
+            accept=".jpeg, .png, .jpg"
+            onChange={(e) => handleFileUpload(e)}
+          />
+          {/* <Button
             type="button"
             gradientDuoTone="purpleToBlue"
             size="sm"
             outline
           >
             Upload Image
-          </Button>
+          </Button> */}
         </div>
         <Button type="submit" gradientDuoTone="purpleToPink">
           Update
@@ -136,3 +148,16 @@ function UpdatePost() {
 }
 
 export default UpdatePost;
+
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result)
+    };
+    fileReader.onerror = (error) => {
+      reject(error)
+    }
+  })
+}
