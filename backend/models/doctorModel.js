@@ -53,6 +53,10 @@ const doctorSchema = new Schema(
         type: String,
         default: "pending",
     },
+    pic: {
+      type: String,
+      required: true
+    }
   },
   {
     timestamps: true,

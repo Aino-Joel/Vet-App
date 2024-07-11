@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 const MyBookings = () => {
-  const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState();
   const [filteredAppointments, setFilteredAppointments] = useState();
   const { user } = useAuthContext();
-  const [status, setStatus] = useState("Approved");
+  const [status, setStatus] = useState("pending");
 
   useEffect(() => {
     const fetchAppointments = async () => {
-      const response = await fetch("http://localhost:5000/api/appointments", {
+      const response = await fetch("http://localhost:5000/api/appointments/my-bookings", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
       const json = await response.json();
-
+      console.log(json)
       if (response.ok) {
         setAppointments(json);
       }
@@ -145,20 +146,20 @@ const MyBookings = () => {
       <h1 className="text-4xl font-bold text-center mb-8">My Appointments</h1>
       <div className="button-group">
         <button
-          className={status === "Approved" ? "active" : ""}
-          onClick={() => handleStatusChange("Approved")}
+          className={status === "approved" ? "active" : ""}
+          onClick={() => handleStatusChange("approved")}
         >
           Approved
         </button>
         <button
-          className={status === "Pending" ? "active" : ""}
-          onClick={() => handleStatusChange("Pending")}
+          className={status === "pending" ? "active" : ""}
+          onClick={() => handleStatusChange("pending")}
         >
           Pending
         </button>
         <button
-          className={status === "Rejected" ? "active" : ""}
-          onClick={() => handleStatusChange("Rejected")}
+          className={status === "rejected" ? "active" : ""}
+          onClick={() => handleStatusChange("rejected")}
         >
           Rejected
         </button>
@@ -167,7 +168,7 @@ const MyBookings = () => {
         {filteredAppointments ? (
           filteredAppointments.map((appointment) => (
             <div key={appointment._id} className="appointment-card">
-              <h3>{appointment.vetName}</h3>
+              <h3>{appointment.patientName}</h3>
               <p>Date: {appointment.date}</p>
               <p>Time: {appointment.time}</p>
               <p>Status: {appointment.status}</p>
@@ -186,7 +187,7 @@ const MyBookings = () => {
                   <FaTimes />
                 </button>
               </div>) : (<div className="buttons">
-                <button onClick={handleCancel(appointment._id)}>Cancel</button>
+                <button onClick={() => handleCancel(appointment._id)}>Cancel</button>
                 <Link to={`/my-bookings/${appointment._id}`} >
                   <button>Update</button>
                 </Link>
