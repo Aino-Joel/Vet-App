@@ -88,11 +88,11 @@ const DoctorSelection = () => {
                     <div className="doctor-rating">
                       <span className="star">&#9733;</span> {doctor.experience}
                     </div>
-                    <p className="next-available">
+                    {/* <p className="next-available">
                       Next available: {doctor.nextAvailable}
-                    </p>
+                    </p> */}
                     <p className="next-available">
-                      Location: {doctor.location}
+                      Location: {doctor.address}
                     </p>
                   </div>
                 </div>
