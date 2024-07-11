@@ -15,8 +15,9 @@ const getMyAppointments = async (req, res) => {
 //get all my Bookings
 const getMyBookings = async (req, res) => {
     const user_id = req.user._id;
+    const vet = await Doctor.findOne({ userId: user_id })
 
-    const bookings = await Appointment.find({ vetId: user_id }).sort({ createdAt: -1 });
+    const bookings = await Appointment.find({ vetId: vet._id }).sort({ createdAt: -1 });
 
     res.status(200).json(bookings);
 };
@@ -62,16 +63,17 @@ const createAppointment = async (req, res) => {
     //add doc to db
     try {
         const vet = await Doctor.findById(req.body.vetId)
+        const vetUser = await User.findById(vet.userId)
         const appointment = await Appointment.create({ ...req.body, vetName: `${vet.fName} ${vet.lName}` });
 
-        const unseenNotifications = vet.unseenNotifications;
+        const unseenNotifications = vetUser.unseenNotifications;
         unseenNotifications.push({
             type: "Appointment request",
             message: `${appointment.patientName} has requested for an appointment`,
             onClickPath: "/my-bookings",
         });
 
-        await User.findByIdAndUpdate(vet._id, { unseenNotifications });
+        await User.findByIdAndUpdate(vetUser._id, { unseenNotifications });
 
         res.status(200).json(appointment);
     } catch (error) {
@@ -132,7 +134,7 @@ const rescheduleAppointment = async (req, res) => {
     });
 
     await User.findByIdAndUpdate(rescheduledUser._id, { unseenNotifications });
-    
+
     if (!appointment) {
         return res.status(404).json({ error: "No such Appointment" });
     }

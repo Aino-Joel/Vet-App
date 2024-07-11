@@ -78,9 +78,11 @@ function Header() {
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>My Profile</Dropdown.Item>
-              <Dropdown.Item>
-                <Link to="/my-appointments">Appointments</Link>
-              </Dropdown.Item>
+              {user.isDoctor ? (<Link to="/my-bookings"><Dropdown.Item>
+                Bookings
+              </Dropdown.Item></Link>) : (<Link to="/my-appointments"><Dropdown.Item>
+                Appointments
+              </Dropdown.Item></Link>)}
               {user.isDoctor && (<Link to="/my-blogs"><Dropdown.Item>
                 My Blogs
               </Dropdown.Item></Link>)}
@@ -112,8 +114,8 @@ function Header() {
         ADMIN Dashboard
       </span>
       ) : (<Navbar.Collapse>
-        <Navbar.Link active={path === "/"} as={"div"}>
-          <Link to="/">Home</Link>
+        <Navbar.Link active={path === "/home"} as={"div"}>
+          <Link to="/home">Home</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/blogs"} as={"div"}>
           <Link to="/blogs">Blog</Link>
