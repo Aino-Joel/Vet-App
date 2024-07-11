@@ -10,9 +10,7 @@ import ApplyDoctor from "./pages/ApplyDoctor";
 import Farmvisit from "./pages/Farmvisit"
 import Urgentcare from "./pages/Urgentcare";
 import Vetclinic from "./pages/Vetclinic";
-import Videovisit from "./pages/Videovisit";
 import Createpost from "./pages/Createpost";
-import Singlepost from "./Components/Singlepost";
 import { useAuthContext } from "./hooks/useAuthContext";
 import ChatPage from "./pages/chatPage";
 import Rating from "./pages/Rating";
@@ -21,7 +19,6 @@ import "./Docprofile.css";
 import "./App.css";
 import Booking from "./pages/Booking";
 import DoctorProfile from "./pages/DoctorsProfile";
-
 import Blogs from "./pages/Blogs";
 import Blogpost from "./pages/Blogpost";
 import VetProfile from "./pages/VetProfile";
@@ -79,7 +76,6 @@ function App() {
          <Route path ="/farmvisit" element = {<Farmvisit/>}/>
   <Route path ="/urgentcare" element = {<Urgentcare/>}/>
   <Route path ="/vetclinic" element = {<Vetclinic/>}/>
-  <Route path ="/videovisit" element = {<Videovisit/>}/> 
         <Route path="/doctor/:id" element={<VetProfile />} />
 
         <Route path="/Videovisit" element={<DoctorProfile />} />

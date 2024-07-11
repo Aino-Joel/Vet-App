@@ -172,7 +172,7 @@ function Home() {
             <h1>Farm visits are carried out on different demonstration farms around Uganda in different areas. Demonstration farms were created to serve different purposes and a few of them include:- Demonstration farms serve as practical training grounds for farmers, showcasing best practices, innovative techniques, and new technologies in agriculture.Practical activities such as planting, irrigation......... <span className="font-medium text-gray-800 dark:text-green"><Link to="/farmvisit">Click to read more</Link></span></h1>
           </Tabs.Item>
           <Tabs.Item title="Urgent Care" icon={FaStethoscope}>
-            <Link to="/urgentcare">This is <span className="font-medium text-gray-800 dark:text-white">Vet-Clinics tab's associated content</span>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</Link>
+            <Link to="/urgentcare">This is to show different diseases that attack the animals,signs and symptoms and how to prevent them.<span className="font-medium text-gray-800 dark:text-white"><Link to='/urgentcare'>Click to view</Link></span></Link>
           </Tabs.Item>
           <Tabs.Item title="Vet-Clinics" icon={MdLocalHospital}>
             <Link to="/vetclinics">This is to show the veterinary clinics near you and contacts in order to contact the doctors for help <span className="font-medium text-gray-800 dark:text-white"><Link to='/vetclinic'>Click to view</Link></span></Link>
