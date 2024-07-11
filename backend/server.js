@@ -10,6 +10,7 @@ const doctorRoutes = require("./routes/doctorRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes")
+const bodyParser = require('body-parser');
 
 const corsOpts = {
   origin: "*",
@@ -23,6 +24,8 @@ const corsOpts = {
 const app = express();
 
 //middleware
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(cors(corsOpts));
 
 app.use(express.json());
@@ -58,7 +61,7 @@ mongoose
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: "vet-app-flax.vercel.app",
     // credentials: true,
   },
 });

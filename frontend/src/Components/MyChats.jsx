@@ -18,7 +18,7 @@ const MyChats = ({ fetchAgain }) => {
   const fetchChats = async () => {
     // console.log(user._id);
     try {
-      const response = await fetch("http://localhost:5000/api/chat", {
+      const response = await fetch("https://vet-app-ffor.onrender.com/api/chat", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,

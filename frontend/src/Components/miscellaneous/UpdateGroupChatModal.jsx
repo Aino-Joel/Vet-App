@@ -41,7 +41,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     try {
       setLoading(true);
     
-      const response = await fetch(`http://localhost:5000/api/user?search=${search}`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/user?search=${search}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -75,7 +75,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     try {
       setRenameLoading(true);
 
-      const response = await fetch(`http://localhost:5000/api/chat/rename`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/chat/rename`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -137,7 +137,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:5000/api/chat/groupadd`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/chat/groupadd`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +186,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:5000/api/chat/groupremove`,{
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/chat/groupremove`,{
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

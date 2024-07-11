@@ -18,7 +18,7 @@ function UpdatePost() {
   useEffect(() => {
     // Fetch the existing blog data based on the ID
     const fetchBlog = async () => {
-      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/blogs/${id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -53,7 +53,7 @@ function UpdatePost() {
 
     // Update the existing blog data
     try {
-      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/blogs/${id}`, {
         method: "PUT",
         body: JSON.stringify(updatedBlog),
         headers: {

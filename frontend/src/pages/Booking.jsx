@@ -6,12 +6,12 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useParams } from "react-router-dom";
 
 const Booking = () => {
+  const { user } = useAuthContext();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("10:00");
-  const [patientName, setPatientName] = useState("");
-  const [email, setEmail] = useState("");
+  const [patientName, setPatientName] = useState(`${user.fName} ${user.lName}`);
+  const [email, setEmail] = useState(user.email);
   const [extraInfo, setExtraInfo] = useState("");
-  const { user } = useAuthContext();
   const { id } = useParams()
 
   const handleDateChange = (date) => {
@@ -39,7 +39,7 @@ const Booking = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/appointments/create`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/appointments/create`, {
         method: "POST",
         body: JSON.stringify(appointment),
         headers: {
@@ -71,7 +71,7 @@ const Booking = () => {
           <label className="block text-gray-700 mb-2">Name:</label>
           <input
             type="text"
-            value={`${user.fName} ${user.lName}`}
+            value={patientName}
             onChange={(e) => setPatientName(e.target.value)}
             required
             // placeholder='Your Name i.e John Doe'
@@ -82,7 +82,7 @@ const Booking = () => {
           <label className="block text-gray-700 mb-2">Email:</label>
           <input
             type="email"
-            value={user.email}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
             className="w-full px-3 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

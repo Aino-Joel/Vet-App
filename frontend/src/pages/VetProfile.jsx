@@ -11,7 +11,7 @@ function VetProfile() {
 
   useEffect(() => {
     const fetchDoctor = async () => {
-      const response = await fetch(`http://localhost:5000/api/doctors/${id}`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/doctors/${id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

@@ -26,7 +26,7 @@ function CreatePost() {
     };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/blogs/create`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/blogs/create`, {
         method: "POST",
         body: JSON.stringify(blog),
         headers: {

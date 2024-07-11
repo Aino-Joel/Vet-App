@@ -53,7 +53,7 @@ const GroupChatModal = ({ children }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:5000/api/user?search=${search}`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/user?search=${search}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -97,7 +97,7 @@ const GroupChatModal = ({ children }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/chat/group`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/chat/group`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

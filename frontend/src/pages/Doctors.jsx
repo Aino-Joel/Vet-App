@@ -16,7 +16,7 @@ const DoctorsTable = () => {
     const fetchDoctors = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/admin/doctors",
+          "https://vet-app-ffor.onrender.com/api/admin/doctors",
           {
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -42,7 +42,7 @@ const DoctorsTable = () => {
   const handleApprove = async (docId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/doctors/approve/${docId}`,
+        `https://vet-app-ffor.onrender.com/api/admin/doctors/approve/${docId}`,
         {
           method: "POST",
           headers: {
@@ -85,7 +85,7 @@ const DoctorsTable = () => {
   const handleDecline = async (docId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/doctors/decline/${docId}`,
+        `https://vet-app-ffor.onrender.com/api/admin/doctors/decline/${docId}`,
         {
           method: "POST",
           headers: {
