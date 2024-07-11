@@ -152,7 +152,7 @@ function Home() {
           <div className="mb-8 text-center">
             <p className="text-lg">{image.description}</p>
             <button className="mt-4 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 transition-transform transform hover:scale-105">
-  Click to read more
+  <Link to='/blogs'>Click to read more</Link>
 </button>
 
           </div>
