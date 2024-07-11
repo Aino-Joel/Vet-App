@@ -39,7 +39,7 @@ const Booking = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/appointments/create`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/appointments/create`, {
         method: "POST",
         body: JSON.stringify(appointment),
         headers: {

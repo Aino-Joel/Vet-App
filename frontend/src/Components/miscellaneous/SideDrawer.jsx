@@ -65,7 +65,7 @@ function SideDrawer() {
       setLoading(true);
 
       const response = await fetch(
-        `http://localhost:5000/api/user?search=${search}`,
+        `https://vet-app-ffor.onrender.com/api/user?search=${search}`,
         {
           method: "GET",
           headers: {
@@ -101,7 +101,7 @@ function SideDrawer() {
     try {
       setLoadingChat(true);
 
-      const response = await fetch(`http://localhost:5000/api/chat`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

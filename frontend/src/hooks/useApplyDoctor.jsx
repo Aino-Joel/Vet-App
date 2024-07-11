@@ -24,7 +24,7 @@ export const useApplyDoctor = () => {
     setError(null);
 
     const response = await fetch(
-      "http://localhost:5000/api/user/apply-doctor-account",
+      "https://vet-app-ffor.onrender.com/api/user/apply-doctor-account",
       {
         method: "POST",
         headers: {

@@ -10,7 +10,7 @@ const Blogpost = () => {
 
   useEffect(() => {
     const fetchBlog = async () => {
-      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/blogs/${id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -31,7 +31,7 @@ const Blogpost = () => {
   }, [user]);
 
   const handleClick = async () => {
-    const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+    const response = await fetch(`https://vet-app-ffor.onrender.com/api/blogs/${id}`, {
       method: "DELETE",
       headers: {
           'Authorization': `Bearer ${user.token}`

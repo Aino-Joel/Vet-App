@@ -25,7 +25,7 @@ const MyBlogs = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const response = await fetch("http://localhost:5000/api/blogs/my-blogs", {
+      const response = await fetch("https://vet-app-ffor.onrender.com/api/blogs/my-blogs", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

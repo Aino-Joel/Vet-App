@@ -24,7 +24,7 @@ const DoctorSelection = () => {
 
   useEffect(() => {
     const fetchDoctors = async () => {
-      const response = await fetch("http://localhost:5000/api/doctors", {
+      const response = await fetch("https://vet-app-ffor.onrender.com/api/doctors", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

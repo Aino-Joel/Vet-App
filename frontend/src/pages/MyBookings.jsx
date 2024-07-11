@@ -11,7 +11,7 @@ const MyBookings = () => {
 
   useEffect(() => {
     const fetchAppointments = async () => {
-      const response = await fetch("http://localhost:5000/api/appointments/my-bookings", {
+      const response = await fetch("https://vet-app-ffor.onrender.com/api/appointments/my-bookings", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -46,7 +46,7 @@ const MyBookings = () => {
   const handleApprove = async (appId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/appointments/approve/${appId}`,
+        `https://vet-app-ffor.onrender.com/api/appointments/approve/${appId}`,
         {
           method: "POST",
           headers: {
@@ -89,7 +89,7 @@ const MyBookings = () => {
   const handleDecline = async (appId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/appointments/decline/${appId}`,
+        `https://vet-app-ffor.onrender.com/api/appointments/decline/${appId}`,
         {
           method: "POST",
           headers: {
@@ -129,7 +129,7 @@ const MyBookings = () => {
   };
 
   const handleCancel = async (appId) => {
-    const response = await fetch(`http://localhost:5000/api/appointments/${appId}`, {
+    const response = await fetch(`https://vet-app-ffor.onrender.com/api/appointments/${appId}`, {
       method: "DELETE",
       headers: {
         'Authorization': `Bearer ${user.token}`

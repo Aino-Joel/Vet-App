@@ -14,7 +14,7 @@ import animationData from "../animations/typing.json";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../context/ChatProvider";
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://vet-app-ffor.onrender.com";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -43,7 +43,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     try {
       setLoading(true);
     
-      const response = await fetch(`http://localhost:5000/api/message/${selectedChat._id}`, {
+      const response = await fetch(`https://vet-app-ffor.onrender.com/api/message/${selectedChat._id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -76,7 +76,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       socket.emit("stop typing", selectedChat._id);
       try {
         setNewMessage("");
-        const response = await fetch("http://localhost:5000/api/message", {
+        const response = await fetch("https://vet-app-ffor.onrender.com/api/message", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

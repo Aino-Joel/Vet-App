@@ -17,7 +17,7 @@ const Reschedule = () => {
 
     useEffect(() => {
         const fetchAppointment = async () => {
-            const response = await fetch(`http://localhost:5000/api/appointments/${id}`, {
+            const response = await fetch(`https://vet-app-ffor.onrender.com/api/appointments/${id}`, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },
@@ -62,7 +62,7 @@ const Reschedule = () => {
         };
 
         try {
-            const response = await fetch(`http://localhost:5000/api/appointments/update/${appointment._id}`, {
+            const response = await fetch(`https://vet-app-ffor.onrender.com/api/appointments/update/${appointment._id}`, {
                 method: "POST",
                 body: JSON.stringify(updatedAppointment),
                 headers: {

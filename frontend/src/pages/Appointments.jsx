@@ -10,7 +10,7 @@ const Appointments = () => {
 
   useEffect(() => {
     const fetchAppointments = async () => {
-      const response = await fetch("http://localhost:5000/api/appointments/my-appointments", {
+      const response = await fetch("https://vet-app-ffor.onrender.com/api/appointments/my-appointments", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -43,7 +43,7 @@ const Appointments = () => {
   };
 
   const handleCancel = async (appId) => {
-    const response = await fetch(`http://localhost:5000/api/appointments/${appId}`, {
+    const response = await fetch(`https://vet-app-ffor.onrender.com/api/appointments/${appId}`, {
       method: "DELETE",
       headers: {
         'Authorization': `Bearer ${user.token}`
