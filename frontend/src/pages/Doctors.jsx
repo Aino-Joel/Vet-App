@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Users.css";
 import { useAuthContext } from "../hooks/useAuthContext";
-import AdminNavbar from "../components/AdminNavbar";
+import AdminNavbar from "../Components/AdminNavbar";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { useToast } from "@chakra-ui/toast";
 

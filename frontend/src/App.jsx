@@ -4,12 +4,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
-import Header from "./components/Header";
-import Footers from "./components/Footers";
+import Header from "./Components/Header";
+import Footers from "./Components/Footers";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import Farmvisit from "./pages/Farmvisit"
 import Urgentcare from "./pages/Urgentcare";
-import Vetclinic from "./pages/Vetclinic";
+import Vetclinic from "./pages/Vetclinic"
 import Createpost from "./pages/Createpost";
 import { useAuthContext } from "./hooks/useAuthContext";
 import ChatPage from "./pages/chatPage";
@@ -44,8 +44,7 @@ function App() {
       {user ? <Header /> : null}
 
       <Routes>
-        {user ? (
-          <Route path="/home" element={<Home />} />
+        {user ? (          <Route path="/home" element={<Home />} />
         ) : (
           <Route path="/" element={<Landing />} />
         )}
@@ -73,9 +72,9 @@ function App() {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/apply" element={<ApplyDoctor />} />
-         <Route path ="/farmvisit" element = {<Farmvisit/>}/>
-  <Route path ="/urgentcare" element = {<Urgentcare/>}/>
-  <Route path ="/vetclinic" element = {<Vetclinic/>}/>
+        <Route path="/farmvisit" element={<Farmvisit />} />
+        <Route path="/urgentcare" element={<Urgentcare />} />
+        <Route path="/vetclinic" element={<Vetclinic />} />
         <Route path="/doctor/:id" element={<VetProfile />} />
 
         <Route path="/Videovisit" element={<DoctorProfile />} />
