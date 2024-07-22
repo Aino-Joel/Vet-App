@@ -2,12 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import { format } from 'date-fns';
 
 const MyBookings = () => {
-  const [appointments, setAppointments] = useState();
+  const [appointments, setAppointments] = useState([]);
   const [filteredAppointments, setFilteredAppointments] = useState();
   const { user } = useAuthContext();
   const [status, setStatus] = useState("pending");
+  const [isLoading, setIsLoading] = useState(true)
+
+  const filterAppointments = (appointments, status) => {
+    const filtered = appointments.filter(
+      (appointment) => appointment.status === status
+    );
+    setFilteredAppointments(filtered);
+  };
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -20,6 +29,8 @@ const MyBookings = () => {
       console.log(json)
       if (response.ok) {
         setAppointments(json);
+        setIsLoading(false)
+        filterAppointments(json, status);
       }
       if (response.status == 401) {
         navigate("/signin");
@@ -31,12 +42,7 @@ const MyBookings = () => {
     }
   }, [user]);
 
-  const filterAppointments = (appointments, status) => {
-    const filtered = appointments.filter(
-      (appointment) => appointment.status === status
-    );
-    setFilteredAppointments(filtered);
-  };
+  
 
   const handleStatusChange = (newStatus) => {
     setStatus(newStatus);
@@ -46,7 +52,7 @@ const MyBookings = () => {
   const handleApprove = async (appId) => {
     try {
       const response = await fetch(
-        `https://vet-app-ffor.onrender.com/api/appointments/approve/${appId}`,
+        `http://localhost:5000/api/appointments/approve/${appId}`,
         {
           method: "POST",
           headers: {
@@ -89,7 +95,7 @@ const MyBookings = () => {
   const handleDecline = async (appId) => {
     try {
       const response = await fetch(
-        `https://vet-app-ffor.onrender.com/api/appointments/decline/${appId}`,
+        `http://localhost:5000/api/appointments/decline/${appId}`,
         {
           method: "POST",
           headers: {
@@ -129,7 +135,7 @@ const MyBookings = () => {
   };
 
   const handleCancel = async (appId) => {
-    const response = await fetch(`https://vet-app-ffor.onrender.com/api/appointments/${appId}`, {
+    const response = await fetch(`http://localhost:5000/api/appointments/${appId}`, {
       method: "DELETE",
       headers: {
         'Authorization': `Bearer ${user.token}`
@@ -143,7 +149,7 @@ const MyBookings = () => {
 
   return (
     <div className="appointments-container">
-      <h1 className="text-4xl font-bold text-center mb-8">My Appointments</h1>
+      {isLoading ? (<h1>Loading...</h1>) : (<><h1 className="text-4xl font-bold text-center mb-8">My Appointments</h1>
       <div className="button-group">
         <button
           className={status === "approved" ? "active" : ""}
@@ -169,7 +175,7 @@ const MyBookings = () => {
           filteredAppointments.map((appointment) => (
             <div key={appointment._id} className="appointment-card">
               <h3>{appointment.patientName}</h3>
-              <p>Date: {appointment.date}</p>
+              <p>Date: {format(appointment.date, 'd MMMM, yyyy')}</p>
               <p>Time: {appointment.time}</p>
               <p>Status: {appointment.status}</p>
 
@@ -197,7 +203,7 @@ const MyBookings = () => {
         ) : (
           <p>No appointments found.</p>
         )}
-      </div>
+      </div> </>)}
     </div>
   );
 };

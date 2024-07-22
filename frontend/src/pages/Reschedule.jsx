@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "tailwindcss/tailwind.css"; // Ensure Tailwind CSS is imported
@@ -62,7 +62,7 @@ const Reschedule = () => {
         };
 
         try {
-            const response = await fetch(`https://vet-app-ffor.onrender.com/api/appointments/update/${appointment._id}`, {
+            const response = await fetch(`http://localhost:5000/api/appointments/update/${appointment._id}`, {
                 method: "POST",
                 body: JSON.stringify(updatedAppointment),
                 headers: {
@@ -94,7 +94,7 @@ const Reschedule = () => {
                     <label className="block text-gray-700 mb-2">Name:</label>
                     <input
                         type="text"
-                        value={patientName}
+                        value={appointment.patientName}
                         onChange={(e) => setPatientName(e.target.value)}
                         required
                         // placeholder='Your Name i.e John Doe'
@@ -105,7 +105,7 @@ const Reschedule = () => {
                     <label className="block text-gray-700 mb-2">Email:</label>
                     <input
                         type="email"
-                        value={email}
+                        value={appointment.email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         className="w-full px-3 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -114,7 +114,7 @@ const Reschedule = () => {
                 <div className="mb-4">
                     <label className="block text-gray-700 mb-2">Select Date:</label>
                     <DatePicker
-                        selected={selectedDate}
+                        selected={appointment.selectedDate}
                         onChange={handleDateChange}
                         dateFormat="MMMM d, yyyy"
                         minDate={new Date()}
@@ -126,7 +126,7 @@ const Reschedule = () => {
                     <label className="block text-gray-700 mb-2">Select Time:</label>
                     <input
                         type="time"
-                        value={selectedTime}
+                        value={appointment.selectedTime}
                         onChange={handleTimeChange}
                         required
                         className="w-full px-3 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -137,7 +137,7 @@ const Reschedule = () => {
                         Additional Information:
                     </label>
                     <textarea
-                        value={extraInfo}
+                        value={appointment.additionalInfo}
                         onChange={(e) => setExtraInfo(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         rows="4"

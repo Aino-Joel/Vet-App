@@ -35,10 +35,10 @@ function VetProfile() {
     <div className="max-w-6xl mx-auto p-4">
       <h1 className="text-4xl font-bold text-center mb-8">Doctor's Profile</h1>
 
-      {doctor && (<div className="flex flex-col sm:flex-row justify-center items-center p-8 rounded-lg shadow-md">
+      {doctor && (<><div className="flex flex-col sm:flex-row justify-center items-center p-8 rounded-lg shadow-md">
         <img
           src={doctor.pic ? doctor.pic : "https://flowbite.com/docs/images/people/profile-picture-5.jpg"}
-          alt="Dr Cosmas Kijjo"
+          alt={doctor.lName}
           className="w-24 h-24 rounded-full object-cover"
         />
         <div className="flex flex-col justify-center ml-6 mt-4 sm:mt-0">
@@ -46,11 +46,20 @@ function VetProfile() {
             <h2 className="text-2xl font-semibold text-gray-800">
               {`Dr. ${doctor.fName} ${doctor.lName}`}
             </h2>
-            <h6 className="text-sm font-bold text-gray-700">
+            <h4 className="text-sm font-bold text-gray-700">
               {`Specialization: ${doctor.specialization}`}
-            </h6>
+            </h4>
+            <h4 className="text-sm font-bold text-gray-700">
+              {`Experience (years): ${doctor.experience}`}
+            </h4>
+            <h4 className="text-sm font-bold text-gray-700">
+              {`Consultation Fee: ${doctor.consultationFee}`}
+            </h4>
+            <h4 className="text-sm font-bold text-gray-700">
+              {`Location: ${doctor.address}`}
+            </h4>
           </div>
-          <div className="flex space-x-16 justify-center sm:justify-start">
+          {/* <div className="flex space-x-16 justify-center sm:justify-start">
             <div className="flex flex-col items-center sm:items-start">
               <h1 className="text-2xl font-bold text-green-600">RATING</h1>
               <h3 className="text-lg font-medium text-gray-800">4.5</h3>
@@ -73,7 +82,7 @@ function VetProfile() {
                 <FaUser />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex justify-center sm:justify-start mt-4">
             <Link to={`/doctor/${id}/booking`}>
               <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition duration-200">
@@ -82,17 +91,19 @@ function VetProfile() {
             </Link>
           </div>
         </div>
-      </div>)}
-
-      <div className="p-8 rounded-lg shadow-md max-w-4xl mx-auto mt-5">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-          About
-        </h2>
-        <h4 className="text-sm font-medium text-gray-700 leading-relaxed">
-          Dr. Kijjo Cosmas is a dedicated and skilled veterinary doctor with over 15 years of experience in animal healthcare. He specializes in small animal medicine and surgery, providing exceptional care for pets of all kinds. Dr. Cosmas is committed to improving the health and well-being of animals through preventive care, accurate diagnoses, and effective treatments. His dedication to continuing education ensures that he stays up-to-date with the latest advancements in veterinary medicine. Outside of the clinic, Dr. Cosmas enjoys volunteering at local animal shelters and participating in community outreach programs.
-        </h4>
-
       </div>
+        <div className="p-8 rounded-lg shadow-md max-w-4xl mx-auto mt-5">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+            About
+          </h2>
+          <h4 className="text-sm font-medium text-gray-700 leading-relaxed">
+            Dr. {doctor.fName} is a dedicated and skilled veterinary doctor with over {doctor.experience} years of experience in animal healthcare. He specializes in {doctor.specialization}, providing exceptional care for pets of all kinds. Dr. {doctor.fName} is committed to improving the health and well-being of animals through preventive care, accurate diagnoses, and effective treatments. His dedication to continuing education ensures that he stays up-to-date with the latest advancements in veterinary medicine. Outside of the clinic, Dr. {doctor.lName} enjoys volunteering at local animal shelters and participating in community outreach programs.
+          </h4>
+
+        </div>
+      </>)}
+
+
 
       <section id="testimonials" className="mt-8">
         <div className="flex justify-between items-center mb-4">

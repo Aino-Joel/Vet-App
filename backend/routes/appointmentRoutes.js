@@ -7,6 +7,7 @@ const {
     rescheduleAppointment,
     approveAppointment,
     declineAppointment,
+    getAppointment,
 } = require('../controllers/appointmentControllers')
 const { requireAuth } = require('../middleware/requireAuth')
 
@@ -21,6 +22,9 @@ router.get('/my-bookings', requireAuth, getMyBookings)
 
 //POST a new Appointment
 router.post('/create', requireAuth, createAppointment)
+
+//GET Appointment
+router.get('/:id', requireAuth, getAppointment)
 
 //DELETE a new Appointment
 router.delete('/:id', requireAuth, deleteAppointment)
